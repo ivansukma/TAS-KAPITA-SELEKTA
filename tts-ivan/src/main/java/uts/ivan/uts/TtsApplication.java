@@ -10,6 +10,7 @@ public class TtsApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(TtsApplication.class, args);
+                System.out.println("Program is running");
 	}
         
         @Bean //Inversion of Control
