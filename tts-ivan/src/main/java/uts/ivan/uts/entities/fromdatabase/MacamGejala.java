@@ -20,15 +20,15 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author ivanr
+ * @author USER
  */
 @Entity
 @Table(name = "macam_gejala")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "MacamGejala_1.findAll", query = "SELECT m FROM MacamGejala_1 m")
-    , @NamedQuery(name = "MacamGejala_1.findById", query = "SELECT m FROM MacamGejala_1 m WHERE m.id = :id")
-    , @NamedQuery(name = "MacamGejala_1.findByRagamGejala", query = "SELECT m FROM MacamGejala_1 m WHERE m.ragamGejala = :ragamGejala")})
+    @NamedQuery(name = "MacamGejala.findAll", query = "SELECT m FROM MacamGejala m")
+    , @NamedQuery(name = "MacamGejala.findById", query = "SELECT m FROM MacamGejala m WHERE m.id = :id")
+    , @NamedQuery(name = "MacamGejala.findByRagamGejala", query = "SELECT m FROM MacamGejala m WHERE m.ragamGejala = :ragamGejala")})
 public class MacamGejala implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -101,7 +101,7 @@ public class MacamGejala implements Serializable {
 
     @Override
     public String toString() {
-        return "uts.ivan.uts.entities.fromdatabase.MacamGejala_1[ id=" + id + " ]";
+        return "uts.ivan.uts.entities.fromdatabase.MacamGejala[ id=" + id + " ]";
     }
     
 }

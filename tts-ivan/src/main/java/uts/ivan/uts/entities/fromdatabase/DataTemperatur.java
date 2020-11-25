@@ -23,17 +23,17 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author ivanr
+ * @author USER
  */
 @Entity
 @Table(name = "data_temperatur")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "DataTemperatur_1.findAll", query = "SELECT d FROM DataTemperatur_1 d")
-    , @NamedQuery(name = "DataTemperatur_1.findById", query = "SELECT d FROM DataTemperatur_1 d WHERE d.id = :id")
-    , @NamedQuery(name = "DataTemperatur_1.findByTanggalPeriksa", query = "SELECT d FROM DataTemperatur_1 d WHERE d.tanggalPeriksa = :tanggalPeriksa")
-    , @NamedQuery(name = "DataTemperatur_1.findBySuhuTubuh", query = "SELECT d FROM DataTemperatur_1 d WHERE d.suhuTubuh = :suhuTubuh")
-    , @NamedQuery(name = "DataTemperatur_1.findByKonfirmasiSuhu", query = "SELECT d FROM DataTemperatur_1 d WHERE d.konfirmasiSuhu = :konfirmasiSuhu")})
+    @NamedQuery(name = "DataTemperatur.findAll", query = "SELECT d FROM DataTemperatur d")
+    , @NamedQuery(name = "DataTemperatur.findById", query = "SELECT d FROM DataTemperatur d WHERE d.id = :id")
+    , @NamedQuery(name = "DataTemperatur.findByTanggalPeriksa", query = "SELECT d FROM DataTemperatur d WHERE d.tanggalPeriksa = :tanggalPeriksa")
+    , @NamedQuery(name = "DataTemperatur.findBySuhuTubuh", query = "SELECT d FROM DataTemperatur d WHERE d.suhuTubuh = :suhuTubuh")
+    , @NamedQuery(name = "DataTemperatur.findByKonfirmasiSuhu", query = "SELECT d FROM DataTemperatur d WHERE d.konfirmasiSuhu = :konfirmasiSuhu")})
 public class DataTemperatur implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -131,7 +131,7 @@ public class DataTemperatur implements Serializable {
 
     @Override
     public String toString() {
-        return "uts.ivan.uts.entities.fromdatabase.DataTemperatur_1[ id=" + id + " ]";
+        return "uts.ivan.uts.entities.fromdatabase.DataTemperatur[ id=" + id + " ]";
     }
     
 }
