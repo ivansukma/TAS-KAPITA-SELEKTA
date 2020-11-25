@@ -6,7 +6,7 @@
 package uts.ivan.uts.entities.fromdatabase;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -24,18 +24,18 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author USER
+ * @author ivanr
  */
 @Entity
 @Table(name = "kuesioner")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Kuesioner.findAll", query = "SELECT k FROM Kuesioner k")
-    , @NamedQuery(name = "Kuesioner.findByIdKuesioner", query = "SELECT k FROM Kuesioner k WHERE k.idKuesioner = :idKuesioner")
-    , @NamedQuery(name = "Kuesioner.findByGejalaUmum", query = "SELECT k FROM Kuesioner k WHERE k.gejalaUmum = :gejalaUmum")
-    , @NamedQuery(name = "Kuesioner.findByKunjunganRS", query = "SELECT k FROM Kuesioner k WHERE k.kunjunganRS = :kunjunganRS")
-    , @NamedQuery(name = "Kuesioner.findByKunjunganLuarkota", query = "SELECT k FROM Kuesioner k WHERE k.kunjunganLuarkota = :kunjunganLuarkota")
-    , @NamedQuery(name = "Kuesioner.findByStatusPernahdirawatCovid19", query = "SELECT k FROM Kuesioner k WHERE k.statusPernahdirawatCovid19 = :statusPernahdirawatCovid19")})
+    @NamedQuery(name = "Kuesioner_1.findAll", query = "SELECT k FROM Kuesioner_1 k")
+    , @NamedQuery(name = "Kuesioner_1.findByIdKuesioner", query = "SELECT k FROM Kuesioner_1 k WHERE k.idKuesioner = :idKuesioner")
+    , @NamedQuery(name = "Kuesioner_1.findByGejalaUmum", query = "SELECT k FROM Kuesioner_1 k WHERE k.gejalaUmum = :gejalaUmum")
+    , @NamedQuery(name = "Kuesioner_1.findByKunjunganRS", query = "SELECT k FROM Kuesioner_1 k WHERE k.kunjunganRS = :kunjunganRS")
+    , @NamedQuery(name = "Kuesioner_1.findByKunjunganLuarkota", query = "SELECT k FROM Kuesioner_1 k WHERE k.kunjunganLuarkota = :kunjunganLuarkota")
+    , @NamedQuery(name = "Kuesioner_1.findByStatusPernahdirawatCovid19", query = "SELECT k FROM Kuesioner_1 k WHERE k.statusPernahdirawatCovid19 = :statusPernahdirawatCovid19")})
 public class Kuesioner implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -56,7 +56,7 @@ public class Kuesioner implements Serializable {
     @Column(name = "status_pernahdirawat_covid19")
     private String statusPernahdirawatCovid19;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idKuesioner", fetch = FetchType.LAZY)
-    private List<MacamGejala> macamGejalaList;
+    private Collection<MacamGejala> macamGejalaCollection;
     @JoinColumn(name = "id_form", referencedColumnName = "id_form")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private FormKepentingan idForm;
@@ -117,12 +117,12 @@ public class Kuesioner implements Serializable {
     }
 
     @XmlTransient
-    public List<MacamGejala> getMacamGejalaList() {
-        return macamGejalaList;
+    public Collection<MacamGejala> getMacamGejalaCollection() {
+        return macamGejalaCollection;
     }
 
-    public void setMacamGejalaList(List<MacamGejala> macamGejalaList) {
-        this.macamGejalaList = macamGejalaList;
+    public void setMacamGejalaCollection(Collection<MacamGejala> macamGejalaCollection) {
+        this.macamGejalaCollection = macamGejalaCollection;
     }
 
     public FormKepentingan getIdForm() {
@@ -155,7 +155,7 @@ public class Kuesioner implements Serializable {
 
     @Override
     public String toString() {
-        return "uts.ivan.uts.entities.fromdatabase.Kuesioner[ idKuesioner=" + idKuesioner + " ]";
+        return "uts.ivan.uts.entities.fromdatabase.Kuesioner_1[ idKuesioner=" + idKuesioner + " ]";
     }
     
 }

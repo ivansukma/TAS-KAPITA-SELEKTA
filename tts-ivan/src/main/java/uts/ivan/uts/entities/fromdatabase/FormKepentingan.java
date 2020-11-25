@@ -6,7 +6,7 @@
 package uts.ivan.uts.entities.fromdatabase;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -25,17 +25,17 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author USER
+ * @author ivanr
  */
 @Entity
 @Table(name = "form_kepentingan")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "FormKepentingan.findAll", query = "SELECT f FROM FormKepentingan f")
-    , @NamedQuery(name = "FormKepentingan.findByIdForm", query = "SELECT f FROM FormKepentingan f WHERE f.idForm = :idForm")
-    , @NamedQuery(name = "FormKepentingan.findByRiwayatPenyakit", query = "SELECT f FROM FormKepentingan f WHERE f.riwayatPenyakit = :riwayatPenyakit")
-    , @NamedQuery(name = "FormKepentingan.findByFakultasKunjungan", query = "SELECT f FROM FormKepentingan f WHERE f.fakultasKunjungan = :fakultasKunjungan")
-    , @NamedQuery(name = "FormKepentingan.findByStatus", query = "SELECT f FROM FormKepentingan f WHERE f.status = :status")})
+    @NamedQuery(name = "FormKepentingan_1.findAll", query = "SELECT f FROM FormKepentingan_1 f")
+    , @NamedQuery(name = "FormKepentingan_1.findByIdForm", query = "SELECT f FROM FormKepentingan_1 f WHERE f.idForm = :idForm")
+    , @NamedQuery(name = "FormKepentingan_1.findByRiwayatPenyakit", query = "SELECT f FROM FormKepentingan_1 f WHERE f.riwayatPenyakit = :riwayatPenyakit")
+    , @NamedQuery(name = "FormKepentingan_1.findByFakultasKunjungan", query = "SELECT f FROM FormKepentingan_1 f WHERE f.fakultasKunjungan = :fakultasKunjungan")
+    , @NamedQuery(name = "FormKepentingan_1.findByStatus", query = "SELECT f FROM FormKepentingan_1 f WHERE f.status = :status")})
 public class FormKepentingan implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -63,9 +63,9 @@ public class FormKepentingan implements Serializable {
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Pengguna idMahasiswa;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idForm", fetch = FetchType.LAZY)
-    private List<DataTemperatur> dataTemperaturList;
+    private Collection<DataTemperatur> dataTemperaturCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idForm", fetch = FetchType.LAZY)
-    private List<Kuesioner> kuesionerList;
+    private Collection<Kuesioner> kuesionerCollection;
 
     public FormKepentingan() {
     }
@@ -139,21 +139,21 @@ public class FormKepentingan implements Serializable {
     }
 
     @XmlTransient
-    public List<DataTemperatur> getDataTemperaturList() {
-        return dataTemperaturList;
+    public Collection<DataTemperatur> getDataTemperaturCollection() {
+        return dataTemperaturCollection;
     }
 
-    public void setDataTemperaturList(List<DataTemperatur> dataTemperaturList) {
-        this.dataTemperaturList = dataTemperaturList;
+    public void setDataTemperaturCollection(Collection<DataTemperatur> dataTemperaturCollection) {
+        this.dataTemperaturCollection = dataTemperaturCollection;
     }
 
     @XmlTransient
-    public List<Kuesioner> getKuesionerList() {
-        return kuesionerList;
+    public Collection<Kuesioner> getKuesionerCollection() {
+        return kuesionerCollection;
     }
 
-    public void setKuesionerList(List<Kuesioner> kuesionerList) {
-        this.kuesionerList = kuesionerList;
+    public void setKuesionerCollection(Collection<Kuesioner> kuesionerCollection) {
+        this.kuesionerCollection = kuesionerCollection;
     }
 
     @Override
@@ -178,7 +178,7 @@ public class FormKepentingan implements Serializable {
 
     @Override
     public String toString() {
-        return "uts.ivan.uts.entities.fromdatabase.FormKepentingan[ idForm=" + idForm + " ]";
+        return "uts.ivan.uts.entities.fromdatabase.FormKepentingan_1[ idForm=" + idForm + " ]";
     }
     
 }

@@ -6,8 +6,8 @@
 package uts.ivan.uts.entities.fromdatabase;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -25,20 +25,20 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author USER
+ * @author ivanr
  */
 @Entity
 @Table(name = "pengguna")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Pengguna.findAll", query = "SELECT p FROM Pengguna p")
-    , @NamedQuery(name = "Pengguna.findByIDPengguna", query = "SELECT p FROM Pengguna p WHERE p.iDPengguna = :iDPengguna")
-    , @NamedQuery(name = "Pengguna.findByUsername", query = "SELECT p FROM Pengguna p WHERE p.username = :username")
-    , @NamedQuery(name = "Pengguna.findByPassword", query = "SELECT p FROM Pengguna p WHERE p.password = :password")
-    , @NamedQuery(name = "Pengguna.findByNama", query = "SELECT p FROM Pengguna p WHERE p.nama = :nama")
-    , @NamedQuery(name = "Pengguna.findByTelefon", query = "SELECT p FROM Pengguna p WHERE p.telefon = :telefon")
-    , @NamedQuery(name = "Pengguna.findByStatusDaftarUlang", query = "SELECT p FROM Pengguna p WHERE p.statusDaftarUlang = :statusDaftarUlang")
-    , @NamedQuery(name = "Pengguna.findByTanggalDaftarUlang", query = "SELECT p FROM Pengguna p WHERE p.tanggalDaftarUlang = :tanggalDaftarUlang")})
+    @NamedQuery(name = "Pengguna_1.findAll", query = "SELECT p FROM Pengguna_1 p")
+    , @NamedQuery(name = "Pengguna_1.findByIDPengguna", query = "SELECT p FROM Pengguna_1 p WHERE p.iDPengguna = :iDPengguna")
+    , @NamedQuery(name = "Pengguna_1.findByUsername", query = "SELECT p FROM Pengguna_1 p WHERE p.username = :username")
+    , @NamedQuery(name = "Pengguna_1.findByPassword", query = "SELECT p FROM Pengguna_1 p WHERE p.password = :password")
+    , @NamedQuery(name = "Pengguna_1.findByNama", query = "SELECT p FROM Pengguna_1 p WHERE p.nama = :nama")
+    , @NamedQuery(name = "Pengguna_1.findByTelefon", query = "SELECT p FROM Pengguna_1 p WHERE p.telefon = :telefon")
+    , @NamedQuery(name = "Pengguna_1.findByStatusDaftarUlang", query = "SELECT p FROM Pengguna_1 p WHERE p.statusDaftarUlang = :statusDaftarUlang")
+    , @NamedQuery(name = "Pengguna_1.findByTanggalDaftarUlang", query = "SELECT p FROM Pengguna_1 p WHERE p.tanggalDaftarUlang = :tanggalDaftarUlang")})
 public class Pengguna implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -66,9 +66,9 @@ public class Pengguna implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date tanggalDaftarUlang;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idAdmin", fetch = FetchType.LAZY)
-    private List<FormKepentingan> formKepentinganList;
+    private Collection<FormKepentingan> formKepentinganCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idMahasiswa", fetch = FetchType.LAZY)
-    private List<FormKepentingan> formKepentinganList1;
+    private Collection<FormKepentingan> formKepentinganCollection1;
 
     public Pengguna() {
     }
@@ -144,21 +144,21 @@ public class Pengguna implements Serializable {
     }
 
     @XmlTransient
-    public List<FormKepentingan> getFormKepentinganList() {
-        return formKepentinganList;
+    public Collection<FormKepentingan> getFormKepentinganCollection() {
+        return formKepentinganCollection;
     }
 
-    public void setFormKepentinganList(List<FormKepentingan> formKepentinganList) {
-        this.formKepentinganList = formKepentinganList;
+    public void setFormKepentinganCollection(Collection<FormKepentingan> formKepentinganCollection) {
+        this.formKepentinganCollection = formKepentinganCollection;
     }
 
     @XmlTransient
-    public List<FormKepentingan> getFormKepentinganList1() {
-        return formKepentinganList1;
+    public Collection<FormKepentingan> getFormKepentinganCollection1() {
+        return formKepentinganCollection1;
     }
 
-    public void setFormKepentinganList1(List<FormKepentingan> formKepentinganList1) {
-        this.formKepentinganList1 = formKepentinganList1;
+    public void setFormKepentinganCollection1(Collection<FormKepentingan> formKepentinganCollection1) {
+        this.formKepentinganCollection1 = formKepentinganCollection1;
     }
 
     @Override
@@ -183,7 +183,7 @@ public class Pengguna implements Serializable {
 
     @Override
     public String toString() {
-        return "uts.ivan.uts.entities.fromdatabase.Pengguna[ iDPengguna=" + iDPengguna + " ]";
+        return "uts.ivan.uts.entities.fromdatabase.Pengguna_1[ iDPengguna=" + iDPengguna + " ]";
     }
     
 }
