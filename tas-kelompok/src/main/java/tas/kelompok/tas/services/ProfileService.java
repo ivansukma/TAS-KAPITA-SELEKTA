@@ -21,6 +21,7 @@ import tas.kelompok.tas.entities.rest.ProfileAddress;
 import tas.kelompok.tas.entities.rest.ProfileContact;
 import tas.kelompok.tas.entities.rest.ProfileEducation;
 import tas.kelompok.tas.entities.rest.ProfileOccupation;
+import tas.kelompok.tas.repositories.PenggunaRepository;
 
 /**
  *
