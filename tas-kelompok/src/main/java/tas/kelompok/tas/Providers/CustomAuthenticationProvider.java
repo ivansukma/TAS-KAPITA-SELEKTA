@@ -34,6 +34,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         LoginInput input = new LoginInput();
         input.setEmail(email);
         input.setPassword(password);
+        System.out.println(password);
         LoginOutput output = service.login(input);
         if (output.getUser() != null) {
         }
