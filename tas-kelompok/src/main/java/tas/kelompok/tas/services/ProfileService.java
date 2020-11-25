@@ -47,13 +47,20 @@ public class ProfileService {
 
     public List<String> listLogin(String id) {
         List<String> listLogin = new ArrayList();
-        ProfileInfo result;
-        Map<String, String> param = new HashMap<>();
-        param.put("id", id);
-        result = restTemplate.getForObject(uri + "profile/basic/{id}" + getUserId(), ProfileInfo.class, param);
-        listLogin.add(result.getId());
-        listLogin.add(result.getEmail());
-        listLogin.add(result.getName());
+
+        ProfileInfo resultBasic;
+        Map<String, String> paramBasic = new HashMap<>();
+        paramBasic.put("id", id);
+        resultBasic = restTemplate.getForObject(uri + "profile/basic/{id}" + getUserId(), ProfileInfo.class, paramBasic);
+        listLogin.add(resultBasic.getId());
+        listLogin.add(resultBasic.getEmail());
+        listLogin.add(resultBasic.getName());
+
+        ProfileContact resultContact;
+        Map<String, String> paramContact = new HashMap<>();
+        paramContact.put("id", id);
+        resultContact = restTemplate.getForObject(uri + "profile/contact/{id}" + getUserId(), ProfileContact.class, paramContact);
+        listLogin.add(resultContact.getPhone());
         return listLogin;
     }
 
