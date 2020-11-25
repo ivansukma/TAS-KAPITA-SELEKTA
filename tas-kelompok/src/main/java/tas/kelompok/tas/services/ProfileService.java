@@ -5,7 +5,9 @@
  */
 package tas.kelompok.tas.services;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -43,13 +45,25 @@ public class ProfileService {
         return result;
     }
 
+    public List<String> listLogin(String id) {
+        List<String> listLogin = new ArrayList();
+        ProfileInfo result;
+        Map<String, String> param = new HashMap<>();
+        param.put("id", id);
+        result = restTemplate.getForObject(uri + "profile/basic/{id}" + getUserId(), ProfileInfo.class, param);
+        listLogin.add(result.getId());
+        listLogin.add(result.getEmail());
+        listLogin.add(result.getName());
+        return listLogin;
+    }
+
     public ProfileAddress getProfileAddress(String id) {
         ProfileAddress result;
         Map<String, String> param = new HashMap<>();
 
         param.put("id", id);
 
-        result = restTemplate.getForObject(uri + "profile/address/{id}"+ getUserId(), ProfileAddress.class, param);
+        result = restTemplate.getForObject(uri + "profile/address/{id}" + getUserId(), ProfileAddress.class, param);
         return result;
     }
 
@@ -59,7 +73,7 @@ public class ProfileService {
 
         param.put("id", id);
 
-        result = restTemplate.getForObject(uri + "profile/contact/{id}"+ getUserId(), ProfileContact.class, param);
+        result = restTemplate.getForObject(uri + "profile/contact/{id}" + getUserId(), ProfileContact.class, param);
         return result;
     }
 
@@ -69,7 +83,7 @@ public class ProfileService {
 
         param.put("id", id);
 
-        result = restTemplate.getForObject(uri + "profile/currentoccupation/{id}"+ getUserId(), ProfileOccupation.class, param);
+        result = restTemplate.getForObject(uri + "profile/currentoccupation/{id}" + getUserId(), ProfileOccupation.class, param);
         return result;
     }
 
@@ -79,13 +93,14 @@ public class ProfileService {
 
         param.put("id", id);
 
-        result = restTemplate.getForObject(uri + "profile/education/{id}"+ getUserId(), ProfileEducation.class, param);
+        result = restTemplate.getForObject(uri + "profile/education/{id}" + getUserId(), ProfileEducation.class, param);
         return result;
     }
-   //=================Get ID FOR SPRING SECURITY====================     
-        public String getUserId(){
+    //=================Get ID FOR SPRING SECURITY====================     
+
+    public String getUserId() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        LoginOutput output = (LoginOutput)authentication.getPrincipal();
+        LoginOutput output = (LoginOutput) authentication.getPrincipal();
         return output.getUser().getId();
     }
     //=============================PER SAVE AN DUNIAWI========================================
@@ -122,7 +137,7 @@ public class ProfileService {
 
         return result;
     }
-    
+
     public boolean updateProfileOccupation(ProfileOccupation input) {
         boolean result = true;
         try {
@@ -133,7 +148,7 @@ public class ProfileService {
 
         return result;
     }
-    
+
     public boolean updateProfileEducation(ProfileEducation input) {
         boolean result = true;
         try {

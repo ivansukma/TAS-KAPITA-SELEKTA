@@ -59,6 +59,7 @@ public class RestController {
     public String profileBasic(Model model) {
         model.addAttribute("profile", profileService.getProfileInfo(id));
         System.out.println(profileService.getProfileInfo(id));
+        System.out.println(profileService.listLogin(id));
         return "profile_basic";
     }
 
