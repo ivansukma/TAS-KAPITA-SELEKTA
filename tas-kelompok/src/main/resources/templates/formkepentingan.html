@@ -159,8 +159,22 @@ and open the template in the editor.
                 color: #cccccc;
             }
 
-
-
+            .form-control {
+                background-color: #f6f6f6;
+                border: none;
+                color: #0d0d0d;
+                display: inline-block;
+                font-size: 16px;
+                margin: 5px;
+                width: 85%;
+                -webkit-transition: all 0.5s ease-in-out;
+                -moz-transition: all 0.5s ease-in-out;
+                -ms-transition: all 0.5s ease-in-out;
+                -o-transition: all 0.5s ease-in-out;
+                transition: all 0.5s ease-in-out;
+                -webkit-border-radius: 5px 5px 5px 5px;
+                border-radius: 5px 5px 5px 5px;
+            }
             /* ANIMATIONS */
 
             /* Simple CSS3 Fade-in-down Animation */
@@ -337,12 +351,12 @@ and open the template in the editor.
                     <br>
                 </div>
                 <form th:object="${kepentinganForm}" th:action="@{/formkepentingan/save}" method="POST">
-                   <input type="text" placeholder="Nama"><br>
+                    <input type="text" placeholder="Nama"><br>
                     <input type="text" placeholder="NIM"><br>
                     <input type="text" placeholder="Kepentingan"><br>
                     <input type="text" placeholder="Riwayat Penyakit"><br>
-                    Lokasi Yang akan dikunjungi : 
                     <select name="pilihFakultas" class="form-control">
+                        <option selected>Lokasi yang akan dikunjungi...</option>
                         <option>FTI</option>
                         <option>FKIP</option>
                         <option>FSM</option>
