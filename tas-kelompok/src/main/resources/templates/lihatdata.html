@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Lihat Data</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <!--<a role="button" onclick="maleNotification()">Male</a><br>-->
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Nama</th>
+                    <th>NIM</th>
+                    <th>Nomor Telefon</th>
+                    <th>Suhu</th>
+                    <th>Konfirmasi Suhu</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="as : ${lihatDataTabel}">
+                    <!--
+                    <td th:text="${as.id}"></td>
+                    <td th:text="${as.city}"></td>
+                    <td th:text="${as.province}"></td>
+                    <td th:text="${as.street1}"></td>
+                    <td th:text="${as.street2}"></td>
+                    <td th:text="${as.zipCode}"></td>
+                    -->
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>
