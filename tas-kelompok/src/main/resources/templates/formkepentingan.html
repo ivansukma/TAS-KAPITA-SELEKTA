@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Form Kepentingan</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>Form Kepentingan Kunjungan Kampus</h1>
+        <form th:object="${kepentinganForm}" th:action="@{/formkepentingan/save}" method="POST">
+            Nama : <input type="text" required><br>
+            NIM : <input type="text" required><br>
+            Kepentingan : <input type="text" required><br>
+            Riwayat Penyakit : <input type="text" required><br>
+            Lokasi Yang akan dikunjungi : 
+            <select name="pilihFakultas">
+                <option>FTI</option>
+                <option>FKIP</option>
+                <option>FSM</option>
+                <option>FBS</option>
+            </select><br>
+            <input type="submit" value="Next Form">
+        </form>
+    </body>
+</html>
