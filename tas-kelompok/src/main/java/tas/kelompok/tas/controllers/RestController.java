@@ -21,6 +21,7 @@ import tas.kelompok.tas.entities.rest.ProfileOccupation;
 import tas.kelompok.tas.entities.rest.ProfileEducation;
 import tas.kelompok.tas.services.RegisterService;
 import tas.kelompok.tas.entities.rest.Register;
+import tas.kelompok.tas.services.PenggunaService;
 
 /**
  *
@@ -32,6 +33,7 @@ public class RestController {
 
     @Autowired
     LoginRestService service;
+    PenggunaService penggunaService;
     
     String id;
     
@@ -49,6 +51,7 @@ public class RestController {
         System.out.println(service.login(input));
         id= service.getLoginId(service.login(input));
         System.out.println(id);
+        penggunaService.save();
         return "redirect:/profile/";
     }
 //======================================Profile===========================================
