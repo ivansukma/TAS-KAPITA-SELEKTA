@@ -37,8 +37,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Pengguna.findByPassword", query = "SELECT p FROM Pengguna p WHERE p.password = :password")
     , @NamedQuery(name = "Pengguna.findByNama", query = "SELECT p FROM Pengguna p WHERE p.nama = :nama")
     , @NamedQuery(name = "Pengguna.findByTelefon", query = "SELECT p FROM Pengguna p WHERE p.telefon = :telefon")
-    , @NamedQuery(name = "Pengguna.findByStatusDaftarUlang", query = "SELECT p FROM Pengguna p WHERE p.statusDaftarUlang = :statusDaftarUlang")
-    , @NamedQuery(name = "Pengguna.findByTanggalDaftarUlang", query = "SELECT p FROM Pengguna p WHERE p.tanggalDaftarUlang = :tanggalDaftarUlang")})
+    , @NamedQuery(name = "Pengguna.findByStatusDaftarulang", query = "SELECT p FROM Pengguna p WHERE p.statusDaftarulang = :statusDaftarulang")
+    , @NamedQuery(name = "Pengguna.findByTanggalBolehDaftarulang", query = "SELECT p FROM Pengguna p WHERE p.tanggalBolehDaftarulang = :tanggalBolehDaftarulang")})
 public class Pengguna implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -59,12 +59,12 @@ public class Pengguna implements Serializable {
     @Column(name = "telefon")
     private String telefon;
     @Basic(optional = false)
-    @Column(name = "status_daftar_ulang")
-    private boolean statusDaftarUlang;
+    @Column(name = "status_daftarulang")
+    private boolean statusDaftarulang;
     @Basic(optional = false)
-    @Column(name = "tanggal_daftar_ulang")
+    @Column(name = "tanggal_boleh_daftarulang")
     @Temporal(TemporalType.DATE)
-    private Date tanggalDaftarUlang;
+    private Date tanggalBolehDaftarulang;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idAdmin", fetch = FetchType.LAZY)
     private List<FormKepentingan> formKepentinganList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idMahasiswa", fetch = FetchType.LAZY)
@@ -77,14 +77,14 @@ public class Pengguna implements Serializable {
         this.iDPengguna = iDPengguna;
     }
 
-    public Pengguna(String iDPengguna, String username, String password, String nama, String telefon, boolean statusDaftarUlang, Date tanggalDaftarUlang) {
+    public Pengguna(String iDPengguna, String username, String password, String nama, String telefon, boolean statusDaftarulang, Date tanggalBolehDaftarulang) {
         this.iDPengguna = iDPengguna;
         this.username = username;
         this.password = password;
         this.nama = nama;
         this.telefon = telefon;
-        this.statusDaftarUlang = statusDaftarUlang;
-        this.tanggalDaftarUlang = tanggalDaftarUlang;
+        this.statusDaftarulang = statusDaftarulang;
+        this.tanggalBolehDaftarulang = tanggalBolehDaftarulang;
     }
 
     public String getIDPengguna() {
@@ -127,20 +127,20 @@ public class Pengguna implements Serializable {
         this.telefon = telefon;
     }
 
-    public boolean getStatusDaftarUlang() {
-        return statusDaftarUlang;
+    public boolean getStatusDaftarulang() {
+        return statusDaftarulang;
     }
 
-    public void setStatusDaftarUlang(boolean statusDaftarUlang) {
-        this.statusDaftarUlang = statusDaftarUlang;
+    public void setStatusDaftarulang(boolean statusDaftarulang) {
+        this.statusDaftarulang = statusDaftarulang;
     }
 
-    public Date getTanggalDaftarUlang() {
-        return tanggalDaftarUlang;
+    public Date getTanggalBolehDaftarulang() {
+        return tanggalBolehDaftarulang;
     }
 
-    public void setTanggalDaftarUlang(Date tanggalDaftarUlang) {
-        this.tanggalDaftarUlang = tanggalDaftarUlang;
+    public void setTanggalBolehDaftarulang(Date tanggalBolehDaftarulang) {
+        this.tanggalBolehDaftarulang = tanggalBolehDaftarulang;
     }
 
     @XmlTransient
@@ -183,7 +183,7 @@ public class Pengguna implements Serializable {
 
     @Override
     public String toString() {
-        return "uts.ivan.uts.entities.fromdatabase.Pengguna[ iDPengguna=" + iDPengguna + " ]";
+        return "tas.kelompok.tas.entities.fromdatabase.Pengguna[ iDPengguna=" + iDPengguna + " ]";
     }
     
 }

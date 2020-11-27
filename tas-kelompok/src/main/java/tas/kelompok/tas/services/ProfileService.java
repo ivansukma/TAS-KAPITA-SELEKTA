@@ -6,6 +6,7 @@
 package tas.kelompok.tas.services;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,6 +16,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import tas.kelompok.tas.entities.fromdatabase.Pengguna;
 import tas.kelompok.tas.entities.rest.LoginOutput;
 import tas.kelompok.tas.entities.rest.ProfileInfo;
 import tas.kelompok.tas.entities.rest.ProfileAddress;
@@ -46,23 +48,30 @@ public class ProfileService {
         return result;
     }
 
-    public List<String> listLogin(String id) {
-        List<String> listLogin = new ArrayList();
+    public Pengguna listLogin(String id) {
+
+        Pengguna pengguna = new Pengguna();
 
         ProfileInfo resultBasic;
         Map<String, String> paramBasic = new HashMap<>();
         paramBasic.put("id", id);
         resultBasic = restTemplate.getForObject(uri + "profile/basic/{id}" + getUserId(), ProfileInfo.class, paramBasic);
-        listLogin.add(resultBasic.getId());
-        listLogin.add(resultBasic.getEmail());
-        listLogin.add(resultBasic.getName());
+        pengguna.setIDPengguna(resultBasic.getId());
+        pengguna.setUsername(resultBasic.getEmail());
+        pengguna.setPassword("test");
+        pengguna.setNama(resultBasic.getName());
 
         ProfileContact resultContact;
         Map<String, String> paramContact = new HashMap<>();
         paramContact.put("id", id);
         resultContact = restTemplate.getForObject(uri + "profile/contact/{id}" + getUserId(), ProfileContact.class, paramContact);
-        listLogin.add(resultContact.getPhone());
-        return listLogin;
+        pengguna.setTelefon(resultContact.getPhone());
+
+        pengguna.setStatusDaftarulang(true);
+        Date date = new Date();
+        pengguna.setTanggalBolehDaftarulang(date);
+        
+        return pengguna;
     }
 
     public ProfileAddress getProfileAddress(String id) {

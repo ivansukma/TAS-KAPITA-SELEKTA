@@ -19,6 +19,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -62,8 +63,8 @@ public class FormKepentingan implements Serializable {
     @JoinColumn(name = "id_mahasiswa", referencedColumnName = "ID_Pengguna")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Pengguna idMahasiswa;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idForm", fetch = FetchType.LAZY)
-    private List<DataTemperatur> dataTemperaturList;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "formKepentingan", fetch = FetchType.LAZY)
+    private DataTemperatur dataTemperatur;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idForm", fetch = FetchType.LAZY)
     private List<Kuesioner> kuesionerList;
 
@@ -138,13 +139,12 @@ public class FormKepentingan implements Serializable {
         this.idMahasiswa = idMahasiswa;
     }
 
-    @XmlTransient
-    public List<DataTemperatur> getDataTemperaturList() {
-        return dataTemperaturList;
+    public DataTemperatur getDataTemperatur() {
+        return dataTemperatur;
     }
 
-    public void setDataTemperaturList(List<DataTemperatur> dataTemperaturList) {
-        this.dataTemperaturList = dataTemperaturList;
+    public void setDataTemperatur(DataTemperatur dataTemperatur) {
+        this.dataTemperatur = dataTemperatur;
     }
 
     @XmlTransient
@@ -178,7 +178,7 @@ public class FormKepentingan implements Serializable {
 
     @Override
     public String toString() {
-        return "uts.ivan.uts.entities.fromdatabase.FormKepentingan[ idForm=" + idForm + " ]";
+        return "tas.kelompok.tas.entities.fromdatabase.FormKepentingan[ idForm=" + idForm + " ]";
     }
     
 }

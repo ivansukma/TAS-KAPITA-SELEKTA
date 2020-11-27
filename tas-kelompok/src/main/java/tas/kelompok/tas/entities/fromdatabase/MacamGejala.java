@@ -12,9 +12,9 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -27,40 +27,40 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "MacamGejala.findAll", query = "SELECT m FROM MacamGejala m")
-    , @NamedQuery(name = "MacamGejala.findById", query = "SELECT m FROM MacamGejala m WHERE m.id = :id")
+    , @NamedQuery(name = "MacamGejala.findByIdKuesioner", query = "SELECT m FROM MacamGejala m WHERE m.idKuesioner = :idKuesioner")
     , @NamedQuery(name = "MacamGejala.findByRagamGejala", query = "SELECT m FROM MacamGejala m WHERE m.ragamGejala = :ragamGejala")})
 public class MacamGejala implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @Column(name = "id")
-    private String id;
+    @Column(name = "id_kuesioner")
+    private String idKuesioner;
     @Basic(optional = false)
     @Column(name = "ragam_gejala")
     private String ragamGejala;
-    @JoinColumn(name = "id_kuesioner", referencedColumnName = "id_kuesioner")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Kuesioner idKuesioner;
+    @JoinColumn(name = "id_kuesioner", referencedColumnName = "id_kuesioner", insertable = false, updatable = false)
+    @OneToOne(optional = false, fetch = FetchType.LAZY)
+    private Kuesioner kuesioner;
 
     public MacamGejala() {
     }
 
-    public MacamGejala(String id) {
-        this.id = id;
+    public MacamGejala(String idKuesioner) {
+        this.idKuesioner = idKuesioner;
     }
 
-    public MacamGejala(String id, String ragamGejala) {
-        this.id = id;
+    public MacamGejala(String idKuesioner, String ragamGejala) {
+        this.idKuesioner = idKuesioner;
         this.ragamGejala = ragamGejala;
     }
 
-    public String getId() {
-        return id;
+    public String getIdKuesioner() {
+        return idKuesioner;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setIdKuesioner(String idKuesioner) {
+        this.idKuesioner = idKuesioner;
     }
 
     public String getRagamGejala() {
@@ -71,18 +71,18 @@ public class MacamGejala implements Serializable {
         this.ragamGejala = ragamGejala;
     }
 
-    public Kuesioner getIdKuesioner() {
-        return idKuesioner;
+    public Kuesioner getKuesioner() {
+        return kuesioner;
     }
 
-    public void setIdKuesioner(Kuesioner idKuesioner) {
-        this.idKuesioner = idKuesioner;
+    public void setKuesioner(Kuesioner kuesioner) {
+        this.kuesioner = kuesioner;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (idKuesioner != null ? idKuesioner.hashCode() : 0);
         return hash;
     }
 
@@ -93,7 +93,7 @@ public class MacamGejala implements Serializable {
             return false;
         }
         MacamGejala other = (MacamGejala) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.idKuesioner == null && other.idKuesioner != null) || (this.idKuesioner != null && !this.idKuesioner.equals(other.idKuesioner))) {
             return false;
         }
         return true;
@@ -101,7 +101,7 @@ public class MacamGejala implements Serializable {
 
     @Override
     public String toString() {
-        return "uts.ivan.uts.entities.fromdatabase.MacamGejala[ id=" + id + " ]";
+        return "tas.kelompok.tas.entities.fromdatabase.MacamGejala[ idKuesioner=" + idKuesioner + " ]";
     }
     
 }

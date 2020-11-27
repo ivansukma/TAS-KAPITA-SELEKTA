@@ -13,9 +13,9 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -30,7 +30,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "DataTemperatur.findAll", query = "SELECT d FROM DataTemperatur d")
-    , @NamedQuery(name = "DataTemperatur.findById", query = "SELECT d FROM DataTemperatur d WHERE d.id = :id")
+    , @NamedQuery(name = "DataTemperatur.findByIdForm", query = "SELECT d FROM DataTemperatur d WHERE d.idForm = :idForm")
     , @NamedQuery(name = "DataTemperatur.findByTanggalPeriksa", query = "SELECT d FROM DataTemperatur d WHERE d.tanggalPeriksa = :tanggalPeriksa")
     , @NamedQuery(name = "DataTemperatur.findBySuhuTubuh", query = "SELECT d FROM DataTemperatur d WHERE d.suhuTubuh = :suhuTubuh")
     , @NamedQuery(name = "DataTemperatur.findByKonfirmasiSuhu", query = "SELECT d FROM DataTemperatur d WHERE d.konfirmasiSuhu = :konfirmasiSuhu")})
@@ -39,8 +39,8 @@ public class DataTemperatur implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @Column(name = "id")
-    private String id;
+    @Column(name = "id_form")
+    private String idForm;
     @Basic(optional = false)
     @Column(name = "tanggal_periksa")
     @Temporal(TemporalType.DATE)
@@ -51,30 +51,30 @@ public class DataTemperatur implements Serializable {
     @Basic(optional = false)
     @Column(name = "konfirmasi_suhu")
     private boolean konfirmasiSuhu;
-    @JoinColumn(name = "id_form", referencedColumnName = "id_form")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private FormKepentingan idForm;
+    @JoinColumn(name = "id_form", referencedColumnName = "id_form", insertable = false, updatable = false)
+    @OneToOne(optional = false, fetch = FetchType.LAZY)
+    private FormKepentingan formKepentingan;
 
     public DataTemperatur() {
     }
 
-    public DataTemperatur(String id) {
-        this.id = id;
+    public DataTemperatur(String idForm) {
+        this.idForm = idForm;
     }
 
-    public DataTemperatur(String id, Date tanggalPeriksa, double suhuTubuh, boolean konfirmasiSuhu) {
-        this.id = id;
+    public DataTemperatur(String idForm, Date tanggalPeriksa, double suhuTubuh, boolean konfirmasiSuhu) {
+        this.idForm = idForm;
         this.tanggalPeriksa = tanggalPeriksa;
         this.suhuTubuh = suhuTubuh;
         this.konfirmasiSuhu = konfirmasiSuhu;
     }
 
-    public String getId() {
-        return id;
+    public String getIdForm() {
+        return idForm;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setIdForm(String idForm) {
+        this.idForm = idForm;
     }
 
     public Date getTanggalPeriksa() {
@@ -101,18 +101,18 @@ public class DataTemperatur implements Serializable {
         this.konfirmasiSuhu = konfirmasiSuhu;
     }
 
-    public FormKepentingan getIdForm() {
-        return idForm;
+    public FormKepentingan getFormKepentingan() {
+        return formKepentingan;
     }
 
-    public void setIdForm(FormKepentingan idForm) {
-        this.idForm = idForm;
+    public void setFormKepentingan(FormKepentingan formKepentingan) {
+        this.formKepentingan = formKepentingan;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (idForm != null ? idForm.hashCode() : 0);
         return hash;
     }
 
@@ -123,7 +123,7 @@ public class DataTemperatur implements Serializable {
             return false;
         }
         DataTemperatur other = (DataTemperatur) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.idForm == null && other.idForm != null) || (this.idForm != null && !this.idForm.equals(other.idForm))) {
             return false;
         }
         return true;
@@ -131,7 +131,7 @@ public class DataTemperatur implements Serializable {
 
     @Override
     public String toString() {
-        return "uts.ivan.uts.entities.fromdatabase.DataTemperatur[ id=" + id + " ]";
+        return "tas.kelompok.tas.entities.fromdatabase.DataTemperatur[ idForm=" + idForm + " ]";
     }
     
 }

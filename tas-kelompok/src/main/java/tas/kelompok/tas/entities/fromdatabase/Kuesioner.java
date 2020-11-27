@@ -6,7 +6,6 @@
 package tas.kelompok.tas.entities.fromdatabase;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -17,10 +16,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -55,8 +53,8 @@ public class Kuesioner implements Serializable {
     @Basic(optional = false)
     @Column(name = "status_pernahdirawat_covid19")
     private String statusPernahdirawatCovid19;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idKuesioner", fetch = FetchType.LAZY)
-    private List<MacamGejala> macamGejalaList;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "kuesioner", fetch = FetchType.LAZY)
+    private MacamGejala macamGejala;
     @JoinColumn(name = "id_form", referencedColumnName = "id_form")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private FormKepentingan idForm;
@@ -116,13 +114,12 @@ public class Kuesioner implements Serializable {
         this.statusPernahdirawatCovid19 = statusPernahdirawatCovid19;
     }
 
-    @XmlTransient
-    public List<MacamGejala> getMacamGejalaList() {
-        return macamGejalaList;
+    public MacamGejala getMacamGejala() {
+        return macamGejala;
     }
 
-    public void setMacamGejalaList(List<MacamGejala> macamGejalaList) {
-        this.macamGejalaList = macamGejalaList;
+    public void setMacamGejala(MacamGejala macamGejala) {
+        this.macamGejala = macamGejala;
     }
 
     public FormKepentingan getIdForm() {
@@ -155,7 +152,7 @@ public class Kuesioner implements Serializable {
 
     @Override
     public String toString() {
-        return "uts.ivan.uts.entities.fromdatabase.Kuesioner[ idKuesioner=" + idKuesioner + " ]";
+        return "tas.kelompok.tas.entities.fromdatabase.Kuesioner[ idKuesioner=" + idKuesioner + " ]";
     }
     
 }
