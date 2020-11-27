@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 25, 2020 at 05:46 AM
+-- Generation Time: Nov 27, 2020 at 02:58 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.33
 
@@ -28,7 +28,6 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `data_temperatur` (
-  `id` varchar(10) NOT NULL,
   `id_form` varchar(10) NOT NULL,
   `tanggal_periksa` date NOT NULL,
   `suhu_tubuh` double NOT NULL,
@@ -73,7 +72,6 @@ CREATE TABLE `kuesioner` (
 --
 
 CREATE TABLE `macam_gejala` (
-  `id` varchar(10) NOT NULL,
   `id_kuesioner` varchar(10) NOT NULL,
   `ragam_gejala` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -90,8 +88,8 @@ CREATE TABLE `pengguna` (
   `password` varchar(20) NOT NULL,
   `nama` varchar(50) NOT NULL,
   `telefon` varchar(20) NOT NULL,
-  `status_daftar_ulang` tinyint(1) NOT NULL,
-  `tanggal_daftar_ulang` date NOT NULL
+  `status_daftarulang` tinyint(1) NOT NULL,
+  `tanggal_boleh_daftarulang` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -102,8 +100,7 @@ CREATE TABLE `pengguna` (
 -- Indexes for table `data_temperatur`
 --
 ALTER TABLE `data_temperatur`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_form` (`id_form`);
+  ADD PRIMARY KEY (`id_form`);
 
 --
 -- Indexes for table `form_kepentingan`
@@ -124,8 +121,7 @@ ALTER TABLE `kuesioner`
 -- Indexes for table `macam_gejala`
 --
 ALTER TABLE `macam_gejala`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_kuesioner` (`id_kuesioner`);
+  ADD PRIMARY KEY (`id_kuesioner`);
 
 --
 -- Indexes for table `pengguna`
