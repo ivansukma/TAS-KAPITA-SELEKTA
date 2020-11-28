@@ -15,6 +15,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.stereotype.Component;
+import tas.kelompok.tas.services.PenggunaService;
 
 /**
  *
@@ -25,6 +26,8 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 
     @Autowired
     LoginRestService service;
+    PenggunaService penggunaService;
+
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
@@ -36,7 +39,9 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         input.setPassword(password);
         System.out.println(password);
         LoginOutput output = service.login(input);
+
         if (output.getUser() != null) {
+
         }
         if (output.getStatus().equals("Verified")) {
             return new UsernamePasswordAuthenticationToken(output, email, new ArrayList<>());

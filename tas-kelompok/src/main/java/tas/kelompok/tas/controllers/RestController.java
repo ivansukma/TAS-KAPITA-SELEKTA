@@ -35,6 +35,7 @@ public class RestController {
     LoginRestService service;
     PenggunaService penggunaService;
     
+    
     String id;
     
     @GetMapping("login")
@@ -51,7 +52,6 @@ public class RestController {
         System.out.println(service.login(input));
         id= service.getLoginId(service.login(input));
         System.out.println(id);
-        penggunaService.save();
         return "redirect:/profile/";
     }
 //======================================Profile===========================================
