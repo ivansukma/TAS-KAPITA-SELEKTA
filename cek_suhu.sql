@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 28, 2020 at 08:54 AM
+-- Generation Time: Nov 30, 2020 at 02:13 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.33
 
@@ -51,6 +51,14 @@ CREATE TABLE `form_kepentingan` (
   `status` enum('menunggu','diterima','ditolak') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `form_kepentingan`
+--
+
+INSERT INTO `form_kepentingan` (`id_form`, `id_mahasiswa`, `id_admin`, `kepentingan`, `riwayat_penyakit`, `fakultas_kunjungan`, `status`) VALUES
+(2, 'USER-00034', NULL, 'Kunjungan Pendaftaran', 'Sehat Kok', 'FTI', NULL),
+(3, NULL, NULL, 'Cek Kampus', 'Sehat KOK', 'FTI', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -84,13 +92,20 @@ CREATE TABLE `macam_gejala` (
 --
 
 CREATE TABLE `pengguna` (
-  `ID_Pengguna` varchar(10) NOT NULL,
-  `username` varchar(20) NOT NULL,
+  `ID_Pengguna` varchar(20) NOT NULL,
+  `email` varchar(50) NOT NULL,
   `nama` varchar(50) NOT NULL,
   `telefon` varchar(20) NOT NULL,
   `status_daftarulang` tinyint(1) DEFAULT NULL,
   `tanggal_boleh_daftarulang` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `pengguna`
+--
+
+INSERT INTO `pengguna` (`ID_Pengguna`, `email`, `nama`, `telefon`, `status_daftarulang`, `tanggal_boleh_daftarulang`) VALUES
+('USER-00034', 'matthewadian@yahoo.com', 'Matthew Adian', '0123456789', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -163,7 +178,7 @@ ALTER TABLE `data_temperatur`
 -- AUTO_INCREMENT for table `form_kepentingan`
 --
 ALTER TABLE `form_kepentingan`
-  MODIFY `id_form` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_form` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `kuesioner`
