@@ -23,28 +23,19 @@ import tas.kelompok.tas.services.ProfileService;
 @Controller
 @RequestMapping("formkepentingan")
 public class FormKepentinganController {
-    
+
     @Autowired
-    ProfileService profileService;
     FormKepentinganService formKepentinganService;
-    
+
     @GetMapping("")
-    public String form1(Model model){
+    public String pengguna(Model model) {
         model.addAttribute("kepentinganForm", new FormKepentingan());
-        //System.out.println(profileService.getUserId());
         return "formkepentingan";
     }
-    
+
     @PostMapping("save")
-    public String simpanform1(FormKepentingan formKepentingan){
-        formKepentinganService.save(formKepentingan);
+    public String save(FormKepentingan formkepentingan) {
+        formKepentinganService.save(formkepentingan);
         return "redirect:/formkepentingan";
-    }
-    
-    
-    @GetMapping("kuesioner")
-    public String form2(Model model){
-        model.addAttribute("kuesionerForm", new Kuesioner());
-        return "kuesioner";
     }
 }

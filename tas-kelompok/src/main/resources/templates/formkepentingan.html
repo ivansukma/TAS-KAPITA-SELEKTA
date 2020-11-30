@@ -351,23 +351,14 @@ and open the template in the editor.
                     <br>
                 </div>
                 <form th:object="${kepentinganForm}" th:action="@{/formkepentingan/save}" method="POST">
-
-                    <input type="text" th:field="*{idForm}" placeholder="Id Form"><br>
                     <input type="text" placeholder="Kepentingan" th:field="*{kepentingan}"><br>
-
                     <input type="text" placeholder="Riwayat Penyakit" th:field="*{riwayatPenyakit}"><br>
-
                     <select th:field="*{fakultasKunjungan}" class="form-control">
                         <option value="FTI">FTI</option>
                         <option value="FBS">FBS</option>
                         <option value="FKIP">FKIP</option>
                         <option value="FSM">FSM</option>
-                    </select><br>
-                    
-                    
-                    <input type="text" th:field="*{idAdmin}" placeholder="Id Admin"><br>
-                    <input type="text" th:field="*{idMahasiswa}" placeholder="Id Mahasiswa"><br>
-                    
+                    </select><br>              
                     <input type="submit" value="Next Form">
                 </form>
                 <br>
