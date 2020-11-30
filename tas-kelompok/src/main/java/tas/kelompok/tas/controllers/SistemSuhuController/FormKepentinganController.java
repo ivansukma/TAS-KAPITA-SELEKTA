@@ -5,6 +5,7 @@
  */
 package tas.kelompok.tas.controllers.SistemSuhuController;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import tas.kelompok.tas.entities.fromdatabase.FormKepentingan;
 import tas.kelompok.tas.entities.fromdatabase.Kuesioner;
+import tas.kelompok.tas.services.FormKepentinganService;
+import tas.kelompok.tas.services.ProfileService;
 
 /**
  *
@@ -21,14 +24,20 @@ import tas.kelompok.tas.entities.fromdatabase.Kuesioner;
 @RequestMapping("formkepentingan")
 public class FormKepentinganController {
     
+    @Autowired
+    ProfileService profileService;
+    FormKepentinganService formKepentinganService;
+    
     @GetMapping("")
     public String form1(Model model){
         model.addAttribute("kepentinganForm", new FormKepentingan());
+        System.out.println(profileService.getUserId());
         return "formkepentingan";
     }
     
     @PostMapping("save")
-    public String simpanform1(){
+    public String simpanform1(FormKepentingan formKepentingan){
+        formKepentinganService.save(formKepentingan);
         return "redirect:/formkepentingan/kuesioner";
     }
     

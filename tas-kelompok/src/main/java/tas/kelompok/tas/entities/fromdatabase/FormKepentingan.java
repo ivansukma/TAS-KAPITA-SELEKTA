@@ -12,6 +12,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
@@ -19,7 +21,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -41,9 +42,10 @@ public class FormKepentingan implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id_form")
-    private String idForm;
+    private Integer idForm;
     @Basic(optional = false)
     @Lob
     @Column(name = "kepentingan")
@@ -54,40 +56,38 @@ public class FormKepentingan implements Serializable {
     @Basic(optional = false)
     @Column(name = "fakultas_kunjungan")
     private String fakultasKunjungan;
-    @Basic(optional = false)
     @Column(name = "status")
     private String status;
     @JoinColumn(name = "id_admin", referencedColumnName = "ID_Pengguna")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Pengguna idAdmin;
     @JoinColumn(name = "id_mahasiswa", referencedColumnName = "ID_Pengguna")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Pengguna idMahasiswa;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "formKepentingan", fetch = FetchType.LAZY)
-    private DataTemperatur dataTemperatur;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idForm", fetch = FetchType.LAZY)
+    private List<DataTemperatur> dataTemperaturList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idForm", fetch = FetchType.LAZY)
     private List<Kuesioner> kuesionerList;
 
     public FormKepentingan() {
     }
 
-    public FormKepentingan(String idForm) {
+    public FormKepentingan(Integer idForm) {
         this.idForm = idForm;
     }
 
-    public FormKepentingan(String idForm, String kepentingan, String riwayatPenyakit, String fakultasKunjungan, String status) {
+    public FormKepentingan(Integer idForm, String kepentingan, String riwayatPenyakit, String fakultasKunjungan) {
         this.idForm = idForm;
         this.kepentingan = kepentingan;
         this.riwayatPenyakit = riwayatPenyakit;
         this.fakultasKunjungan = fakultasKunjungan;
-        this.status = status;
     }
 
-    public String getIdForm() {
+    public Integer getIdForm() {
         return idForm;
     }
 
-    public void setIdForm(String idForm) {
+    public void setIdForm(Integer idForm) {
         this.idForm = idForm;
     }
 
@@ -139,12 +139,13 @@ public class FormKepentingan implements Serializable {
         this.idMahasiswa = idMahasiswa;
     }
 
-    public DataTemperatur getDataTemperatur() {
-        return dataTemperatur;
+    @XmlTransient
+    public List<DataTemperatur> getDataTemperaturList() {
+        return dataTemperaturList;
     }
 
-    public void setDataTemperatur(DataTemperatur dataTemperatur) {
-        this.dataTemperatur = dataTemperatur;
+    public void setDataTemperaturList(List<DataTemperatur> dataTemperaturList) {
+        this.dataTemperaturList = dataTemperaturList;
     }
 
     @XmlTransient

@@ -24,14 +24,13 @@ public class PenggunaService {
     PenggunaRepository penggunaRepository;
     ProfileService profileService;
     LoginRestService loginService;
-    
+
     public Pengguna save() {
         //String id = loginService.getLoginId(output);
         Pengguna pengguna = new Pengguna();
         //pengguna = profileService.listLogin(id);
         pengguna.setIDPengguna("USER-00034");
-        pengguna.setUsername("Matthew");
-        pengguna.setPassword("qwerty");
+        //pengguna.setUsername("Matthew");
         pengguna.setNama("Matthew");
         pengguna.setTelefon("012345");
         pengguna.setStatusDaftarulang(true);

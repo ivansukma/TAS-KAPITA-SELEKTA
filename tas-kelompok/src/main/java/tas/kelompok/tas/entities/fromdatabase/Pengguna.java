@@ -9,7 +9,6 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -33,8 +32,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Pengguna.findAll", query = "SELECT p FROM Pengguna p")
     , @NamedQuery(name = "Pengguna.findByIDPengguna", query = "SELECT p FROM Pengguna p WHERE p.iDPengguna = :iDPengguna")
-    , @NamedQuery(name = "Pengguna.findByUsername", query = "SELECT p FROM Pengguna p WHERE p.username = :username")
-    , @NamedQuery(name = "Pengguna.findByPassword", query = "SELECT p FROM Pengguna p WHERE p.password = :password")
+    , @NamedQuery(name = "Pengguna.findByEmail", query = "SELECT p FROM Pengguna p WHERE p.email = :email")
     , @NamedQuery(name = "Pengguna.findByNama", query = "SELECT p FROM Pengguna p WHERE p.nama = :nama")
     , @NamedQuery(name = "Pengguna.findByTelefon", query = "SELECT p FROM Pengguna p WHERE p.telefon = :telefon")
     , @NamedQuery(name = "Pengguna.findByStatusDaftarulang", query = "SELECT p FROM Pengguna p WHERE p.statusDaftarulang = :statusDaftarulang")
@@ -47,27 +45,22 @@ public class Pengguna implements Serializable {
     @Column(name = "ID_Pengguna")
     private String iDPengguna;
     @Basic(optional = false)
-    @Column(name = "username")
-    private String username;
-    @Basic(optional = false)
-    @Column(name = "password")
-    private String password;
+    @Column(name = "email")
+    private String email;
     @Basic(optional = false)
     @Column(name = "nama")
     private String nama;
     @Basic(optional = false)
     @Column(name = "telefon")
     private String telefon;
-    @Basic(optional = false)
     @Column(name = "status_daftarulang")
-    private boolean statusDaftarulang;
-    @Basic(optional = false)
+    private Boolean statusDaftarulang;
     @Column(name = "tanggal_boleh_daftarulang")
     @Temporal(TemporalType.DATE)
     private Date tanggalBolehDaftarulang;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idAdmin", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "idAdmin", fetch = FetchType.LAZY)
     private List<FormKepentingan> formKepentinganList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idMahasiswa", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "idMahasiswa", fetch = FetchType.LAZY)
     private List<FormKepentingan> formKepentinganList1;
 
     public Pengguna() {
@@ -77,14 +70,11 @@ public class Pengguna implements Serializable {
         this.iDPengguna = iDPengguna;
     }
 
-    public Pengguna(String iDPengguna, String username, String password, String nama, String telefon, boolean statusDaftarulang, Date tanggalBolehDaftarulang) {
+    public Pengguna(String iDPengguna, String email, String nama, String telefon) {
         this.iDPengguna = iDPengguna;
-        this.username = username;
-        this.password = password;
+        this.email = email;
         this.nama = nama;
         this.telefon = telefon;
-        this.statusDaftarulang = statusDaftarulang;
-        this.tanggalBolehDaftarulang = tanggalBolehDaftarulang;
     }
 
     public String getIDPengguna() {
@@ -95,20 +85,12 @@ public class Pengguna implements Serializable {
         this.iDPengguna = iDPengguna;
     }
 
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getNama() {
@@ -127,11 +109,11 @@ public class Pengguna implements Serializable {
         this.telefon = telefon;
     }
 
-    public boolean getStatusDaftarulang() {
+    public Boolean getStatusDaftarulang() {
         return statusDaftarulang;
     }
 
-    public void setStatusDaftarulang(boolean statusDaftarulang) {
+    public void setStatusDaftarulang(Boolean statusDaftarulang) {
         this.statusDaftarulang = statusDaftarulang;
     }
 

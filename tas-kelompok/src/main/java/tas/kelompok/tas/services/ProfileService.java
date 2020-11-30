@@ -57,8 +57,8 @@ public class ProfileService {
         paramBasic.put("id", id);
         resultBasic = restTemplate.getForObject(uri + "profile/basic/{id}" + getUserId(), ProfileInfo.class, paramBasic);
         pengguna.setIDPengguna(resultBasic.getId());
-        pengguna.setUsername(resultBasic.getEmail());
-        pengguna.setPassword("test");
+        //pengguna.setUsername(resultBasic.getEmail());
+        //pengguna.setPassword("test");
         pengguna.setNama(resultBasic.getName());
 
         ProfileContact resultContact;

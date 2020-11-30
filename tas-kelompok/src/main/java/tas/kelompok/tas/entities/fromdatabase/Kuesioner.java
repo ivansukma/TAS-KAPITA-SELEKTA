@@ -7,16 +7,16 @@ package tas.kelompok.tas.entities.fromdatabase;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Kuesioner.findAll", query = "SELECT k FROM Kuesioner k")
-    , @NamedQuery(name = "Kuesioner.findByIdKuesioner", query = "SELECT k FROM Kuesioner k WHERE k.idKuesioner = :idKuesioner")
+    , @NamedQuery(name = "Kuesioner.findById", query = "SELECT k FROM Kuesioner k WHERE k.id = :id")
     , @NamedQuery(name = "Kuesioner.findByGejalaUmum", query = "SELECT k FROM Kuesioner k WHERE k.gejalaUmum = :gejalaUmum")
     , @NamedQuery(name = "Kuesioner.findByKunjunganRS", query = "SELECT k FROM Kuesioner k WHERE k.kunjunganRS = :kunjunganRS")
     , @NamedQuery(name = "Kuesioner.findByKunjunganLuarkota", query = "SELECT k FROM Kuesioner k WHERE k.kunjunganLuarkota = :kunjunganLuarkota")
@@ -38,12 +38,13 @@ public class Kuesioner implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "id_kuesioner")
-    private String idKuesioner;
+    @Column(name = "id")
+    private Integer id;
     @Basic(optional = false)
     @Column(name = "gejala_umum")
-    private boolean gejalaUmum;
+    private String gejalaUmum;
     @Basic(optional = false)
     @Column(name = "kunjungan_RS")
     private String kunjunganRS;
@@ -53,8 +54,6 @@ public class Kuesioner implements Serializable {
     @Basic(optional = false)
     @Column(name = "status_pernahdirawat_covid19")
     private String statusPernahdirawatCovid19;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "kuesioner", fetch = FetchType.LAZY)
-    private MacamGejala macamGejala;
     @JoinColumn(name = "id_form", referencedColumnName = "id_form")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private FormKepentingan idForm;
@@ -62,31 +61,31 @@ public class Kuesioner implements Serializable {
     public Kuesioner() {
     }
 
-    public Kuesioner(String idKuesioner) {
-        this.idKuesioner = idKuesioner;
+    public Kuesioner(Integer id) {
+        this.id = id;
     }
 
-    public Kuesioner(String idKuesioner, boolean gejalaUmum, String kunjunganRS, String kunjunganLuarkota, String statusPernahdirawatCovid19) {
-        this.idKuesioner = idKuesioner;
+    public Kuesioner(Integer id, String gejalaUmum, String kunjunganRS, String kunjunganLuarkota, String statusPernahdirawatCovid19) {
+        this.id = id;
         this.gejalaUmum = gejalaUmum;
         this.kunjunganRS = kunjunganRS;
         this.kunjunganLuarkota = kunjunganLuarkota;
         this.statusPernahdirawatCovid19 = statusPernahdirawatCovid19;
     }
 
-    public String getIdKuesioner() {
-        return idKuesioner;
+    public Integer getId() {
+        return id;
     }
 
-    public void setIdKuesioner(String idKuesioner) {
-        this.idKuesioner = idKuesioner;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public boolean getGejalaUmum() {
+    public String getGejalaUmum() {
         return gejalaUmum;
     }
 
-    public void setGejalaUmum(boolean gejalaUmum) {
+    public void setGejalaUmum(String gejalaUmum) {
         this.gejalaUmum = gejalaUmum;
     }
 
@@ -114,14 +113,6 @@ public class Kuesioner implements Serializable {
         this.statusPernahdirawatCovid19 = statusPernahdirawatCovid19;
     }
 
-    public MacamGejala getMacamGejala() {
-        return macamGejala;
-    }
-
-    public void setMacamGejala(MacamGejala macamGejala) {
-        this.macamGejala = macamGejala;
-    }
-
     public FormKepentingan getIdForm() {
         return idForm;
     }
@@ -133,7 +124,7 @@ public class Kuesioner implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idKuesioner != null ? idKuesioner.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -144,7 +135,7 @@ public class Kuesioner implements Serializable {
             return false;
         }
         Kuesioner other = (Kuesioner) object;
-        if ((this.idKuesioner == null && other.idKuesioner != null) || (this.idKuesioner != null && !this.idKuesioner.equals(other.idKuesioner))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -152,7 +143,7 @@ public class Kuesioner implements Serializable {
 
     @Override
     public String toString() {
-        return "tas.kelompok.tas.entities.fromdatabase.Kuesioner[ idKuesioner=" + idKuesioner + " ]";
+        return "tas.kelompok.tas.entities.fromdatabase.Kuesioner[ id=" + id + " ]";
     }
     
 }
