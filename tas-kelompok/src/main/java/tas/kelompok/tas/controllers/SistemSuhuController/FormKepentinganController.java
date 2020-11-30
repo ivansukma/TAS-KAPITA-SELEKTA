@@ -31,14 +31,14 @@ public class FormKepentinganController {
     @GetMapping("")
     public String form1(Model model){
         model.addAttribute("kepentinganForm", new FormKepentingan());
-        System.out.println(profileService.getUserId());
+        //System.out.println(profileService.getUserId());
         return "formkepentingan";
     }
     
     @PostMapping("save")
     public String simpanform1(FormKepentingan formKepentingan){
         formKepentinganService.save(formKepentingan);
-        return "redirect:/formkepentingan/kuesioner";
+        return "redirect:/formkepentingan";
     }
     
     

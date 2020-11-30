@@ -67,9 +67,9 @@ public class ProfileService {
         resultContact = restTemplate.getForObject(uri + "profile/contact/{id}" + getUserId(), ProfileContact.class, paramContact);
         pengguna.setTelefon(resultContact.getPhone());
 
-        pengguna.setStatusDaftarulang(true);
+        //pengguna.setStatusDaftarulang(true);
         Date date = new Date();
-        pengguna.setTanggalBolehDaftarulang(date);
+        //pengguna.setTanggalBolehDaftarulang(date);
         
         return pengguna;
     }
