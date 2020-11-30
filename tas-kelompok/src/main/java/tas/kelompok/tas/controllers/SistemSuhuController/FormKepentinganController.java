@@ -36,6 +36,6 @@ public class FormKepentinganController {
     @PostMapping("save")
     public String save(FormKepentingan formkepentingan) {
         formKepentinganService.save(formkepentingan);
-        return "redirect:/formkepentingan";
+        return "redirect:/kuesioner";
     }
 }
