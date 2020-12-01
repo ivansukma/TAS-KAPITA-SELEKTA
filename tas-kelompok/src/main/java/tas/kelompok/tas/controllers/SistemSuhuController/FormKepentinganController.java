@@ -41,7 +41,7 @@ public class FormKepentinganController {
     
     @GetMapping("formmasuk")
     public String formMasuk(Model model) {
-        //model.addAttribute("kepentinganForm", new FormKepentingan());
+        model.addAttribute("lihatformmasuk", formKepentinganService.getAll());
         return "lihat_form";
     }
         
