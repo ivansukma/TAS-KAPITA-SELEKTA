@@ -350,28 +350,29 @@ and open the template in the editor.
                     <h1 style="text-align: center">Kuesioner</h1>
                     <br>
                 </div>
-                <form th:object="${kuesionerForm}" method="POST">
+                <form th:object="${kuesionerForm}" th:action="@{/kuesioner/save}" method="POST">
+                    <input type="text" placeholder="Id Form" th:field="*{idForm}"><br>
                     Selama 2 minggu pernah keluar kota ?
-                    <select name="pilihFakultas" class="form-control">
-                        <option>Ya</option>
-                        <option>Tidak</option>
+                    <select th:field="*{kunjunganLuarkota}" class="form-control">
+                        <option value="Ya">Ya</option>
+                        <option value="Tidak">Tidak</option>
                     </select><br><br>
                     Apakah terdapat gejala (Batuk,Radang,Sesak Nafas) ?<br>
-                    Batuk <input type="checkbox" name="batuk" value="ON" />
-                    Radang <input type="checkbox" name="radang" value="ON" />
-                    Sesak Nafas <input type="checkbox" name="sesakNafas" value="ON" />
-                    Pilek <input type="checkbox" name="pilek" value="ON" />
-                    Panas <input type="checkbox" name="panas" value="ON" />
+                    Batuk <input type="checkbox" th:field="*{gejalaUmum}" value="Batuk" />
+                    Radang <input type="checkbox" th:field="*{gejalaUmum}" value="Radang" />
+                    Sesak Nafas <input type="checkbox" th:field="*{gejalaUmum}" value="Sesak Nafas" />
+                    Pilek <input type="checkbox" th:field="*{gejalaUmum}" value="Pilek" />
+                    Panas <input type="checkbox" th:field="*{gejalaUmum}" value="Panas" />
                     <br><br>
                     Selama 2 minggu pernah ke rumahsakit ?
-                    <select name="pilihFakultas" class="form-control">
-                        <option>Ya</option>
-                        <option>Tidak</option>
+                    <select th:field="*{kunjunganRS}" class="form-control">
+                        <option value="Ya">Ya</option>
+                        <option value="Tidak">Tidak</option>
                     </select><br>
                     Pernah dirawat dengan status covid-19 ? : 
-                    <select name="pilihFakultas"class="form-control">
-                        <option>Ya</option>
-                        <option>Tidak</option>
+                    <select th:field="*{statusPernahdirawatCovid19}" class="form-control">
+                        <option value="Ya">Ya</option>
+                        <option value="Tidak">Tidak</option>
                     </select><br>
                     <input type="submit" value="Submit">
                 </form>
