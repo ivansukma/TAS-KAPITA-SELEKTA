@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author USER
+ * @author ivanr
  */
 @Entity
 @Table(name = "data_temperatur")
