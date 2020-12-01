@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author USER
+ * @author ivanr
  */
 @Entity
 @Table(name = "kuesioner")
@@ -42,7 +42,6 @@ public class Kuesioner implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Basic(optional = false)
     @Column(name = "gejala_umum")
     private String gejalaUmum;
     @Basic(optional = false)
@@ -65,9 +64,8 @@ public class Kuesioner implements Serializable {
         this.id = id;
     }
 
-    public Kuesioner(Integer id, String gejalaUmum, String kunjunganRS, String kunjunganLuarkota, String statusPernahdirawatCovid19) {
+    public Kuesioner(Integer id, String kunjunganRS, String kunjunganLuarkota, String statusPernahdirawatCovid19) {
         this.id = id;
-        this.gejalaUmum = gejalaUmum;
         this.kunjunganRS = kunjunganRS;
         this.kunjunganLuarkota = kunjunganLuarkota;
         this.statusPernahdirawatCovid19 = statusPernahdirawatCovid19;
