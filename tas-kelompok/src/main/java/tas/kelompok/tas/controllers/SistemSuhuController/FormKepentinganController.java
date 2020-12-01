@@ -39,5 +39,10 @@ public class FormKepentinganController {
         return "redirect:/kuesioner";
     }
     
+    @GetMapping("formmasuk")
+    public String formMasuk(Model model) {
+        //model.addAttribute("kepentinganForm", new FormKepentingan());
+        return "lihat_form";
+    }
         
 }
