@@ -18,4 +18,7 @@ import tas.kelompok.tas.entities.fromdatabase.FormKepentingan;
 public interface FormKepentinganRepository extends JpaRepository<FormKepentingan, Integer> {
     @Query(value = "SELECT * FROM form_kepentingan WHERE status ='diterima' OR status='ditolak'", nativeQuery = true)
     List<FormKepentingan> findByAllStatus();
+    
+    @Query(value = "SELECT * FROM form_kepentingan WHERE status = :status", nativeQuery = true)
+    List<FormKepentingan> findByStatus(@Param("status") String status);
 }

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import tas.kelompok.tas.entities.fromdatabase.FormKepentingan;
@@ -50,5 +51,12 @@ public class FormKepentinganController {
         model.addAttribute("statusform", formKepentinganService.getByAllStatus());
         return "status_form";
     }
-        
+    
+    @GetMapping("status/{status}")
+    public String formByStatus(Model model, @PathVariable String status) {
+        model.addAttribute("statusform", formKepentinganService.getByStatus(status));
+        return "status_form";
+    }
+    
+           
 }

@@ -32,4 +32,8 @@ public class FormKepentinganService {
     public List<FormKepentingan> getByAllStatus() {
         return formKepentinganRepository.findByAllStatus();
     }
+    
+    public List<FormKepentingan> getByStatus(String status) {
+        return formKepentinganRepository.findByStatus(status);
+    }
 }
