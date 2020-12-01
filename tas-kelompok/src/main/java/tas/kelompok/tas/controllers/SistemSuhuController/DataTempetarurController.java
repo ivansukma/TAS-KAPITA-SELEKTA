@@ -24,7 +24,7 @@ public class DataTempetarurController {
     
     @GetMapping("")
     public String dataSuhu(Model model){
-        model.addAttribute("lihatDataTabel", new DataTemperatur());
-        return "lihatdata";
+        //model.addAttribute("lihatDataTabel", new DataTemperatur());
+        return "lihat_data";
     }
 }

@@ -39,10 +39,5 @@ public class FormKepentinganController {
         return "redirect:/kuesioner";
     }
     
-    @GetMapping("lihatdata")
-    public String lihatData(Model model) {
-        //model.addAttribute("kepentinganForm", new FormKepentingan());
-        return "lihat_data";
-    }
-    
+        
 }
