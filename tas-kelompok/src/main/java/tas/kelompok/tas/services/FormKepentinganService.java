@@ -29,4 +29,7 @@ public class FormKepentinganService {
         return formKepentinganRepository.save(formKepentingan);
     }
     
+    public List<FormKepentingan> getByAllStatus() {
+        return formKepentinganRepository.findByAllStatus();
+    }
 }

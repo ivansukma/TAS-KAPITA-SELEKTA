@@ -44,5 +44,11 @@ public class FormKepentinganController {
         model.addAttribute("lihatformmasuk", formKepentinganService.getAll());
         return "lihat_form";
     }
+    
+    @GetMapping("status")
+    public String formStatus(Model model) {
+        model.addAttribute("statusform", formKepentinganService.getByAllStatus());
+        return "status_form";
+    }
         
 }
