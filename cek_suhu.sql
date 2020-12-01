@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 01, 2020 at 07:05 AM
+-- Generation Time: Dec 01, 2020 at 08:10 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.33
 
@@ -56,15 +56,10 @@ CREATE TABLE `form_kepentingan` (
 --
 
 INSERT INTO `form_kepentingan` (`id_form`, `id_mahasiswa`, `id_admin`, `kepentingan`, `riwayat_penyakit`, `fakultas_kunjungan`, `status`) VALUES
-(2, 'USER-00034', NULL, 'Kunjungan Pendaftaran', 'Sehat Kok', 'FTI', NULL),
-(3, NULL, NULL, 'Cek Kampus', 'Sehat KOK', 'FTI', NULL),
-(6, NULL, NULL, 'Ke kampus', 'Tidak ada', 'FTI', NULL),
-(7, NULL, NULL, 'Ke kampus', 'Tidak ada', 'FBS', NULL),
-(8, NULL, NULL, 'Ke kampus', 'Tidak ada', 'FTI', NULL),
-(9, NULL, NULL, 'Ke kampus', 'Tidak ada', 'FTI', NULL),
-(10, NULL, NULL, 'Ke kampus', 'Tidak ada', 'FTI', NULL),
-(11, NULL, NULL, 'Ke kampus', 'Tidak ada', 'FTI', NULL),
-(12, NULL, NULL, 'Ke kampus', 'Tidak ada', 'FTI', NULL);
+(2, 'USER-00034', NULL, 'Kunjungan Pendaftaran', 'Sehat Kok', 'FTI', 'menunggu'),
+(8, 'USER-00034', NULL, 'Ke kampus', 'Tidak ada', 'FTI', 'menunggu'),
+(9, 'USER-00034', NULL, 'Ke kampus', 'Tidak ada', 'FTI', 'ditolak'),
+(13, 'USER-00015', NULL, 'Tes', 'Gk Papa', 'FTI', 'diterima');
 
 -- --------------------------------------------------------
 
@@ -87,9 +82,7 @@ CREATE TABLE `kuesioner` (
 
 INSERT INTO `kuesioner` (`id`, `id_form`, `gejala_umum`, `kunjungan_RS`, `kunjungan_luarkota`, `status_pernahdirawat_covid19`) VALUES
 (1, 8, 'Batuk', 'Ya', 'Ya', 'Ya'),
-(2, 9, 'Batuk,Radang', 'Ya', 'Ya', 'Ya'),
-(3, 8, 'Batuk', 'Ya', 'Ya', 'Ya'),
-(4, 8, NULL, 'Ya', 'Ya', 'Ya');
+(2, 9, 'Batuk,Radang', 'Ya', 'Ya', 'Ya');
 
 -- --------------------------------------------------------
 
@@ -122,6 +115,7 @@ CREATE TABLE `pengguna` (
 --
 
 INSERT INTO `pengguna` (`ID_Pengguna`, `email`, `nama`, `telefon`, `status_daftarulang`, `tanggal_boleh_daftarulang`) VALUES
+('USER-00015', 'hartonomatthew0@gmail.com', 'Hartono', '123456789', NULL, NULL),
 ('USER-00034', 'matthewadian@yahoo.com', 'Matthew Adian', '0123456789', NULL, NULL);
 
 -- --------------------------------------------------------
@@ -195,7 +189,7 @@ ALTER TABLE `data_temperatur`
 -- AUTO_INCREMENT for table `form_kepentingan`
 --
 ALTER TABLE `form_kepentingan`
-  MODIFY `id_form` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_form` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `kuesioner`
