@@ -1,0 +1,27 @@
+SDLC : Prototype
+
+Alasan : 
+program yang selama ini dibuat sudah ada mockup dan selalu memerhatikan kebutuhan user. Aplikasi yang dibuat
+juga tidak dalam skala besar, dan sering ditambahkan informasi dari user sehingga sdlc prototype ini cocok 
+digunakan dan secara tidak langsung kita sudah mempraktekannya pada awal pembuatan aplikasi yaitu dengan 
+menunjukkan ERD,Mock-up,BPMN,Use Case kepada Kak Aqira yang di ibaratkan sebagai seorang User
+
+===Tahapan Prototype===
+-Pengumpulan kebutuhan
+Pelanggan dan pengembang bersama sama mendefinisikan format seluru perangkat lunak , semua kebutuhan , dan garis besar sistem yang akan dibuat.
+
+-Membangun Prototyping
+Dengan membuat perancangan sementara yang berfokus pada penyajian kepada pelanggan (Misal membuat input dan format output).
+
+-Evaluasi Prototyping
+Evaluasi ini dilakukan oleh customer , jika sudah sesuai maka langkah selanjutnya akan diambil . Namun jika belum sesuai maka prototyping nya direvisi dengan mengulang langkah-langkah sebelumnya.-Mengkodekan Sistem
+Dalam tahap ini prototyping yang sudah disepakati diterjemahkan kedalam bahasa pemograman yang sesuai.
+
+-Menguji Sistem
+Setelah sistem menjadi suatu perangkat lunak , kemudian dilakukan proses pengujian .
+
+-Evaluasi Sistem
+Pelanggan akan mengevaluasi apakah perangkat lunak sudah jadi dan sudah sesuai yang diharapkan. Jika Ya maka proses akan dilanjutkan ke tahap selanjutnya . Namun jika Tidak maka mengulang tahap sebelumnya.
+
+-Menggunakan Sistem
+Perangkat lunak yang telah diuji dan diterima pelanggan siap untuk digunakan .
