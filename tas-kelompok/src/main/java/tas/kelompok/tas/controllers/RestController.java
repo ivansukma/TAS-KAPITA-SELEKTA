@@ -59,11 +59,19 @@ public class RestController {
     ProfileService profileService;
 
     @GetMapping("")
-    public String profileBasic(Model model) {
+    public String profileBasicLearner(Model model) {
         model.addAttribute("profile", profileService.getProfileInfo(id));
         System.out.println(profileService.getProfileInfo(id));
         System.out.println(profileService.listLogin(id));
-        return "profile_basic";
+        return "profile_basic_learner";
+    }
+    
+    @GetMapping("admin")
+    public String profileBasicAdmin(Model model) {
+        model.addAttribute("profile", profileService.getProfileInfo(id));
+        System.out.println(profileService.getProfileInfo(id));
+        System.out.println(profileService.listLogin(id));
+        return "profile_basic_admin";
     }
 
     @GetMapping("/address/")
