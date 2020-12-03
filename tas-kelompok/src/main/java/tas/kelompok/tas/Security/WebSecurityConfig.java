@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package tas.kelompok.tas.Security;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +21,6 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
  *
  * @author ivanr
  */
-
 @EnableWebSecurity
 
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -40,6 +38,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/register/**").permitAll()
+                .antMatchers("/formkepentingan").hasAuthority("ROLE_LEARNER")
+                .antMatchers("/lihatdata").hasAuthority("ROLE_SUPER_ADMIN")
                 .anyRequest()
                 .authenticated()
                 .and()
@@ -67,4 +67,3 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
 }
- 

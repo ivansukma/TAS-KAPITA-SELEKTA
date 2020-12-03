@@ -70,7 +70,7 @@ public class ProfileService {
         //pengguna.setStatusDaftarulang(true);
         Date date = new Date();
         //pengguna.setTanggalBolehDaftarulang(date);
-
+        
         return pengguna;
     }
 
@@ -118,18 +118,11 @@ public class ProfileService {
     public String getUserId() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         LoginOutput output = (LoginOutput) authentication.getPrincipal();
-        System.out.println(output.getUser().getId());
         return output.getUser().getId();
     }
 
-    public List<String> getRoles() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        LoginOutput output = (LoginOutput) authentication.getPrincipal();
-        System.out.println(output.getUser().getRoles());
-        return output.getUser().getRoles();
-    }
-
     //=============================PER SAVE AN DUNIAWI========================================
+
     public boolean updateProfileBasic(ProfileInfo input) {
         boolean result = true;
         try {
