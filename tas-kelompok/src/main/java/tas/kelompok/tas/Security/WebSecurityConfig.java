@@ -16,6 +16,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import tas.kelompok.tas.SuccessHandler.CustomLoginSuccessHandler;
 
 /**
  *
@@ -24,6 +25,11 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity
 
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Bean
+    public CustomLoginSuccessHandler successHandler() {
+        return new CustomLoginSuccessHandler();
+    }
 
     @Bean
     public UserDetailsService userDetailsService() {
@@ -38,8 +44,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/register/**").permitAll()
-                .antMatchers("/formkepentingan").hasAuthority("ROLE_LEARNER")
-                .antMatchers("/lihatdata").hasAuthority("ROLE_SUPER_ADMIN")
+                .antMatchers("/address/").hasAuthority("ROLE_LEARNER")
+                .antMatchers("/contact/").hasAuthority("ROLE_SUPER_ADMIN")
                 .anyRequest()
                 .authenticated()
                 .and()
@@ -49,7 +55,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/login")
                 .loginProcessingUrl("/login_execute")
                 .failureUrl("/login?error=true")
-                .defaultSuccessUrl("/")
+                //handler success url
+                .successHandler(successHandler())
                 .usernameParameter("email")
                 .passwordParameter("password")
                 .and()
