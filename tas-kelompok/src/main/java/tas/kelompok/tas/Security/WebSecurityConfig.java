@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-/*
+
 package tas.kelompok.tas.Security;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
  *
  * @author ivanr
  */
-/*
+
 @EnableWebSecurity
 
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -67,4 +67,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
 }
- */
+ 
