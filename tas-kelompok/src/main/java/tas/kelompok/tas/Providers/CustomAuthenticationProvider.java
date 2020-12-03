@@ -9,11 +9,13 @@ import tas.kelompok.tas.entities.rest.LoginInput;
 import tas.kelompok.tas.entities.rest.LoginOutput;
 import tas.kelompok.tas.services.LoginRestService;
 import java.util.ArrayList;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import tas.kelompok.tas.services.PenggunaService;
 
@@ -21,14 +23,12 @@ import tas.kelompok.tas.services.PenggunaService;
  *
  * @author ivanr
  */
-
 @Component
 public class CustomAuthenticationProvider implements AuthenticationProvider {
 
     @Autowired
     LoginRestService service;
     PenggunaService penggunaService;
-
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
@@ -56,5 +56,4 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
     public boolean supports(Class<?> authentication) {
         return authentication.equals(UsernamePasswordAuthenticationToken.class);
     }
-
 }
