@@ -5,12 +5,14 @@
  */
 package tas.kelompok.tas.controllers.SistemSuhuController;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import tas.kelompok.tas.entities.fromdatabase.DataTemperatur;
 import tas.kelompok.tas.entities.fromdatabase.FormKepentingan;
+import tas.kelompok.tas.services.DataTemperaturService;
 
 /**
  *
@@ -21,10 +23,12 @@ import tas.kelompok.tas.entities.fromdatabase.FormKepentingan;
 @RequestMapping("lihatdata")
 
 public class DataTempetarurController {
+    @Autowired
+    DataTemperaturService dataTemperaturService;
     
     @GetMapping("")
     public String dataSuhu(Model model){
-        model.addAttribute("lihatDataTabel", new DataTemperatur());
+        model.addAttribute("lihatDataTabel", dataTemperaturService.getAll());
         return "lihat_data";
     }
 }

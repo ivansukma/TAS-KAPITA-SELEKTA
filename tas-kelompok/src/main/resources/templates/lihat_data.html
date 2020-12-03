@@ -347,14 +347,11 @@
             <tbody>
 
                 <tr th:each="as : ${lihatDataTabel}">
-                    <!--
-                    <td th:text="${as.id}"></td>
-                    <td th:text="${as.city}"></td>
-                    <td th:text="${as.province}"></td>
-                    <td th:text="${as.street1}"></td>
-                    <td th:text="${as.street2}"></td>
-                    <td th:text="${as.zipCode}"></td>
-                    -->
+                    
+                    <td th:text="${as.idForm.idMahasiswa.nama}"></td>
+                    <td th:text="${as.idForm.idMahasiswa.telefon}"></td>
+                    <td th:text="${as.suhuTubuh}"></td>
+                    <td th:text="${as.konfirmasiSuhu}"></td>
                 </tr>
 
             </tbody>
