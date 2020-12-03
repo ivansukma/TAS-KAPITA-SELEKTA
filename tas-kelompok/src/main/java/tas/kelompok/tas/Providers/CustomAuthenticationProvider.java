@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package tas.kelompok.tas.Providers;
-
+/*
 import tas.kelompok.tas.entities.rest.LoginInput;
 import tas.kelompok.tas.entities.rest.LoginOutput;
 import tas.kelompok.tas.services.LoginRestService;
@@ -21,6 +21,7 @@ import tas.kelompok.tas.services.PenggunaService;
  *
  * @author ivanr
  */
+/*
 @Component
 public class CustomAuthenticationProvider implements AuthenticationProvider {
 
@@ -57,3 +58,4 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
     }
 
 }
+*/

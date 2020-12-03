@@ -12,8 +12,8 @@ import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
+//import org.springframework.security.core.Authentication;
+//import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import tas.kelompok.tas.entities.fromdatabase.Pengguna;
@@ -44,7 +44,7 @@ public class ProfileService {
 
         param.put("id", id);
 
-        result = restTemplate.getForObject(uri + "profile/basic/{id}" + getUserId(), ProfileInfo.class, param);
+        result = restTemplate.getForObject(uri + "profile/basic/{id}" /*+ getUserId()*/, ProfileInfo.class, param);
         return result;
     }
 
@@ -55,7 +55,7 @@ public class ProfileService {
         ProfileInfo resultBasic;
         Map<String, String> paramBasic = new HashMap<>();
         paramBasic.put("id", id);
-        resultBasic = restTemplate.getForObject(uri + "profile/basic/{id}" + getUserId(), ProfileInfo.class, paramBasic);
+        resultBasic = restTemplate.getForObject(uri + "profile/basic/{id}" /*+ getUserId()*/, ProfileInfo.class, paramBasic);
         pengguna.setIDPengguna(resultBasic.getId());
         //pengguna.setUsername(resultBasic.getEmail());
         //pengguna.setPassword("test");
@@ -64,7 +64,7 @@ public class ProfileService {
         ProfileContact resultContact;
         Map<String, String> paramContact = new HashMap<>();
         paramContact.put("id", id);
-        resultContact = restTemplate.getForObject(uri + "profile/contact/{id}" + getUserId(), ProfileContact.class, paramContact);
+        resultContact = restTemplate.getForObject(uri + "profile/contact/{id}" /*+ getUserId()*/, ProfileContact.class, paramContact);
         pengguna.setTelefon(resultContact.getPhone());
 
         //pengguna.setStatusDaftarulang(true);
@@ -80,7 +80,7 @@ public class ProfileService {
 
         param.put("id", id);
 
-        result = restTemplate.getForObject(uri + "profile/address/{id}" + getUserId(), ProfileAddress.class, param);
+        result = restTemplate.getForObject(uri + "profile/address/{id}" /*+ getUserId()*/, ProfileAddress.class, param);
         return result;
     }
 
@@ -90,7 +90,7 @@ public class ProfileService {
 
         param.put("id", id);
 
-        result = restTemplate.getForObject(uri + "profile/contact/{id}" + getUserId(), ProfileContact.class, param);
+        result = restTemplate.getForObject(uri + "profile/contact/{id}" /*+ getUserId()*/, ProfileContact.class, param);
         return result;
     }
 
@@ -100,7 +100,7 @@ public class ProfileService {
 
         param.put("id", id);
 
-        result = restTemplate.getForObject(uri + "profile/currentoccupation/{id}" + getUserId(), ProfileOccupation.class, param);
+        result = restTemplate.getForObject(uri + "profile/currentoccupation/{id}" /*+ getUserId()*/, ProfileOccupation.class, param);
         return result;
     }
 
@@ -110,16 +110,17 @@ public class ProfileService {
 
         param.put("id", id);
 
-        result = restTemplate.getForObject(uri + "profile/education/{id}" + getUserId(), ProfileEducation.class, param);
+        result = restTemplate.getForObject(uri + "profile/education/{id}" /*+ getUserId()*/, ProfileEducation.class, param);
         return result;
     }
     //=================Get ID FOR SPRING SECURITY====================     
-
+/*
     public String getUserId() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         LoginOutput output = (LoginOutput) authentication.getPrincipal();
         return output.getUser().getId();
     }
+*/
     //=============================PER SAVE AN DUNIAWI========================================
 
     public boolean updateProfileBasic(ProfileInfo input) {
