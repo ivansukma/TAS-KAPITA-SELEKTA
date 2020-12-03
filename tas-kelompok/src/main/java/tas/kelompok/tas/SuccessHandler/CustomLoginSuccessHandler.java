@@ -44,9 +44,9 @@ public class CustomLoginSuccessHandler extends SimpleUrlAuthenticationSuccessHan
         System.out.println(data);
 
         if (data.getUser().getRoles().contains("ROLE_LEARNER")) {
-            url = "/address/";
+             return "formkepentingan";
         } else if (data.getUser().getRoles().contains("ROLE_SUPER_ADMIN")) {
-            url = "/contact/";
+           return "lihatdata";
         }
         return url;
     }
