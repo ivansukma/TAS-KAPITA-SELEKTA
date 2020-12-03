@@ -46,9 +46,9 @@ public class FormKepentinganController {
         return "redirect:/kuesioner";
     }
     
-    @GetMapping("formmasuk")
-    public String formMasuk(Model model) {
-        model.addAttribute("lihatformmasuk", formKepentinganService.getAll());
+    @GetMapping("formmasuk/{status}")
+    public String formMasuk(Model model, @PathVariable String status) {
+        model.addAttribute("lihatformmasuk", formKepentinganService.getByStatus(status));
         return "lihat_form";
     }
     
