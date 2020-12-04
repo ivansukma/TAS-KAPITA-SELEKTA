@@ -34,11 +34,6 @@ public class FormKepentinganController {
         return "formkepentingan";
     }
     
-    @GetMapping("admin")
-    public String penggunaAdmin(Model model) {
-        model.addAttribute("kepentinganForm", new FormKepentingan());
-        return "formkepentingan_admin";
-    }
 
     @PostMapping("save")
     public String save(FormKepentingan formkepentingan) {

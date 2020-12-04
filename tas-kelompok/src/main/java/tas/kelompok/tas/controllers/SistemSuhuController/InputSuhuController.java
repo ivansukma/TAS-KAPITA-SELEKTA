@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import tas.kelompok.tas.entities.fromdatabase.DataTemperatur;
-import tas.kelompok.tas.entities.fromdatabase.FormKepentingan;
 import tas.kelompok.tas.services.DataTemperaturService;
 
 /**
@@ -21,17 +20,21 @@ import tas.kelompok.tas.services.DataTemperaturService;
  */
 
 @Controller
-@RequestMapping("lihatdata")
+@RequestMapping("inputsuhu")
 
-public class DataTempetarurController {
+public class InputSuhuController {
     @Autowired
     DataTemperaturService dataTemperaturService;
     
     @GetMapping("")
-    public String dataSuhu(Model model){
-        model.addAttribute("lihatDataTabel", dataTemperaturService.getAll());
-        return "lihat_data";
+    public String dataInputSuhu(Model model){
+        model.addAttribute("suhuForm", new DataTemperatur());
+        return "formkepentingan_admin";
     }
     
-    
+    @PostMapping("save")
+    public String saveSuhu(DataTemperatur dataTemperatur) {
+        dataTemperaturService.save(dataTemperatur);
+        return "redirect:/lihatdata/inputsuhu";
+    }
 }

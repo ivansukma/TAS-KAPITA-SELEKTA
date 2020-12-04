@@ -347,20 +347,19 @@ and open the template in the editor.
             <div id="formContent">
                 <div class="fadeIn first">
                     <br>
-                    <h1 style="text-align: center">Formulir Kepentingan</h1>
+                    <h1 style="text-align: center">Formulir Absensi Suhu Tubuh</h1>
                     <br>
                 </div>
-                <form th:object="${kepentinganForm}" th:action="@{/formkepentingan/save}" method="POST">
-                    <input type="hidden" placeholder="Id Mahasiswa" th:field="*{idMahasiswa}" th:value="${IdMahasiswa}"><br>
-                    <input type="text" placeholder="Kepentingan" th:field="*{kepentingan}"><br>
-                    <input type="text" placeholder="Riwayat Penyakit" th:field="*{riwayatPenyakit}"><br>
-                    <select th:field="*{fakultasKunjungan}" class="form-control">
-                        <option value="FTI">FTI</option>
-                        <option value="FBS">FBS</option>
-                        <option value="FKIP">FKIP</option>
-                        <option value="FSM">FSM</option>
-                    </select><br>              
-                    <input type="submit" value="Next Form">
+                <form th:object="${suhuForm}" th:action="@{/inputsuhu/save}" method="POST">
+                    
+                    
+                    <input type="text" placeholder="Id Form" th:field="*{idForm}"><br>
+                    <input type="text" placeholder="Tanggal Periksa" th:field="*{tanggalPeriksa}"><br>
+                    <input type="text" placeholder="Suhu" th:field="*{suhuTubuh}"><br>
+                    <input type="text" placeholder="Konfirmasi Suhu" th:field="*{konfirmasiSuhu}"><br>
+                    
+                    <input type="submit" value="Submit">
+                    
                 </form>
                 <br>
                 <br>
