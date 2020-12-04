@@ -25,4 +25,8 @@ public class DataTemperaturService {
         return dataTemperaturRepository.findAll();
     }
     
+    public DataTemperatur save(DataTemperatur dataTemperatur) {
+        return dataTemperaturRepository.save(dataTemperatur);
+    }
+    
 }
