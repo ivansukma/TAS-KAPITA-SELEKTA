@@ -349,7 +349,7 @@ and open the template in the editor.
                     <br>
                 </div>
                 <form th:object="${kepentinganForm}" th:action="@{/formkepentingan/save}" method="POST">
-                   
+                    <input type="hidden" th:attr="name='idMahasiswa'" th:value="USER-00034"><br>
                     <input type="text" placeholder="Kepentingan" th:field="*{kepentingan}"><br>
                     <input type="text" placeholder="Riwayat Penyakit" th:field="*{riwayatPenyakit}"><br>
                     <select th:field="*{fakultasKunjungan}" class="form-control">
@@ -358,7 +358,7 @@ and open the template in the editor.
                         <option value="FKIP">FKIP</option>
                         <option value="FSM">FSM</option>
                     </select><br>             
-                    <input type="hidden" placeholder="Id Mahasiswa" th:attr="name='status'" th:value="menunggu"><br>
+                    <input type="hidden" th:attr="name='status'" th:value="menunggu"><br>
                     <input type="submit" value="Next Form">
                 </form>
                 <br>
