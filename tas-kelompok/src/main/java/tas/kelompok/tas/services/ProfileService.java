@@ -70,7 +70,7 @@ public class ProfileService {
         //pengguna.setStatusDaftarulang(true);
         Date date = new Date();
         //pengguna.setTanggalBolehDaftarulang(date);
-        
+
         return pengguna;
     }
 
@@ -114,15 +114,22 @@ public class ProfileService {
         return result;
     }
     //=================Get ID FOR SPRING SECURITY====================     
+    @Autowired
+    PenggunaService penggunaservice;
 
     public String getUserId() {
+        Pengguna pengguna = new Pengguna();
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         LoginOutput output = (LoginOutput) authentication.getPrincipal();
+        pengguna.setNama(output.getUser().getName());
+        pengguna.setIDPengguna(output.getUser().getId());
+        pengguna.setEmail(output.getUser().getEmail());
+        pengguna.setTelefon("08123123123");
+        penggunaservice.save(pengguna);
         return output.getUser().getId();
     }
 
     //=============================PER SAVE AN DUNIAWI========================================
-
     public boolean updateProfileBasic(ProfileInfo input) {
         boolean result = true;
         try {
