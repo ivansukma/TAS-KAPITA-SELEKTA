@@ -322,7 +322,7 @@ and open the template in the editor.
                     <li class="nav-item active">
                         <a class="nav-link">Input Formulir</a>
                     </li>
-                    
+
                     <!--<li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Dropdown
@@ -349,7 +349,7 @@ and open the template in the editor.
                     <br>
                 </div>
                 <form th:object="${kepentinganForm}" th:action="@{/formkepentingan/save}" method="POST">
-                    <input type="hidden" placeholder="Id Mahasiswa" th:field="*{idMahasiswa}" th:value="${IdMahasiswa}"><br>
+                   
                     <input type="text" placeholder="Kepentingan" th:field="*{kepentingan}"><br>
                     <input type="text" placeholder="Riwayat Penyakit" th:field="*{riwayatPenyakit}"><br>
                     <select th:field="*{fakultasKunjungan}" class="form-control">
@@ -357,7 +357,8 @@ and open the template in the editor.
                         <option value="FBS">FBS</option>
                         <option value="FKIP">FKIP</option>
                         <option value="FSM">FSM</option>
-                    </select><br>              
+                    </select><br>             
+                    <input type="hidden" placeholder="Id Mahasiswa" th:attr="name='status'" th:value="menunggu"><br>
                     <input type="submit" value="Next Form">
                 </form>
                 <br>
