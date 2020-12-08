@@ -28,10 +28,12 @@ public class FormKepentinganController {
 
     @Autowired
     FormKepentinganService formKepentinganService;
-
+    ProfileService profileService;
+    
     @GetMapping("")
     public String pengguna(Model model) {
         model.addAttribute("kepentinganForm", new FormKepentingan());
+        model.addAttribute("idForm", "USER-00034");
         return "formkepentingan";
     }
     
