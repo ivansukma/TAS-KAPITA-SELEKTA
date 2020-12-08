@@ -35,6 +35,6 @@ public class InputSuhuController {
     @PostMapping("save")
     public String saveSuhu(DataTemperatur dataTemperatur) {
         dataTemperaturService.save(dataTemperatur);
-        return "redirect:/lihatdata/inputsuhu";
+        return "redirect:/inputsuhu";
     }
 }
