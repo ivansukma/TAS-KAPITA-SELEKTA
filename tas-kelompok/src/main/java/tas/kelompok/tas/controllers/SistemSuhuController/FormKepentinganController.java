@@ -6,6 +6,8 @@
 package tas.kelompok.tas.controllers.SistemSuhuController;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import tas.kelompok.tas.entities.fromdatabase.FormKepentingan;
 import tas.kelompok.tas.entities.fromdatabase.Kuesioner;
+import tas.kelompok.tas.entities.fromdatabase.Pengguna;
+import tas.kelompok.tas.entities.rest.LoginOutput;
 import tas.kelompok.tas.services.FormKepentinganService;
 import tas.kelompok.tas.services.ProfileService;
 
@@ -32,8 +36,10 @@ public class FormKepentinganController {
     
     @GetMapping("")
     public String pengguna(Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        LoginOutput output = (LoginOutput) authentication.getPrincipal();
         model.addAttribute("kepentinganForm", new FormKepentingan());
-        model.addAttribute("idForm", "USER-00034");
+        model.addAttribute("idForm", output.getUser().getId());
         return "formkepentingan";
     }
     
