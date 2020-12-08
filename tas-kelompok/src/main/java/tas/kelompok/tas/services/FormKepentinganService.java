@@ -36,4 +36,9 @@ public class FormKepentinganService {
     public List<FormKepentingan> getByStatus(String status) {
         return formKepentinganRepository.findByStatus(status);
     }
+    
+    public void updateStatus(int idForm){
+        formKepentinganRepository.updateByStatus(idForm);
+    }
+    
 }

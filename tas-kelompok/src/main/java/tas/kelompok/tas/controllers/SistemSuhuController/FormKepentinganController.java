@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import tas.kelompok.tas.entities.fromdatabase.FormKepentingan;
 import tas.kelompok.tas.entities.fromdatabase.Kuesioner;
 import tas.kelompok.tas.services.FormKepentinganService;
@@ -46,6 +47,13 @@ public class FormKepentinganController {
         model.addAttribute("lihatformmasuk", formKepentinganService.getByStatus(status));
         return "lihat_form";
     }
+    
+    @GetMapping("update/{idForm}")
+    public String updateStatus(Model model, @PathVariable int idForm) {
+        formKepentinganService.updateStatus(idForm);
+        return "lihat_form";
+    }
+    
     
     @GetMapping("status")
     public String formStatus(Model model) {

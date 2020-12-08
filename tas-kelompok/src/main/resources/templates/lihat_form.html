@@ -351,11 +351,12 @@ and open the template in the editor.
             <tbody>
 
                 <tr th:each="as : ${lihatformmasuk}">
+                    <td th:text="${as.idForm}"></td>
                     <td th:text="${as.idMahasiswa.nama}"></td>
                     <td th:text="${as.kepentingan}"></td>
                     <td>
-                        <a class="btn btn-success" role="button">Terima</a>
-                        <a class="btn btn-danger" role="button">Tolak</a>
+                        <a class="btn btn-success" th:href="@{/formkepentingan/update/{id}(id=${as.idForm})}" role="button">Terima</a>
+                        <a class="btn btn-danger" th:href="@{/lihatdata/ditolak}" role="button">Tolak</a>
                     </td>
                 </tr>
 

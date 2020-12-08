@@ -9,6 +9,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.web.bind.annotation.RequestParam;
 import tas.kelompok.tas.entities.fromdatabase.FormKepentingan;
 
 /**
@@ -21,4 +22,7 @@ public interface FormKepentinganRepository extends JpaRepository<FormKepentingan
     
     @Query(value = "SELECT * FROM form_kepentingan WHERE status = :status", nativeQuery = true)
     List<FormKepentingan> findByStatus(@Param("status") String status);
+    
+    @Query(value = "UPDATE form_kepentingan SET status = 'diterima' WHERE id_form = :idForm", nativeQuery = true)
+    void updateByStatus(@Param("idForm") int idForm);
 }
