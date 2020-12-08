@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author USER
+ * @author ivanr
  */
 @Entity
 @Table(name = "pengguna")
@@ -34,7 +34,6 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Pengguna.findByIDPengguna", query = "SELECT p FROM Pengguna p WHERE p.iDPengguna = :iDPengguna")
     , @NamedQuery(name = "Pengguna.findByEmail", query = "SELECT p FROM Pengguna p WHERE p.email = :email")
     , @NamedQuery(name = "Pengguna.findByNama", query = "SELECT p FROM Pengguna p WHERE p.nama = :nama")
-    , @NamedQuery(name = "Pengguna.findByTelefon", query = "SELECT p FROM Pengguna p WHERE p.telefon = :telefon")
     , @NamedQuery(name = "Pengguna.findByStatusDaftarulang", query = "SELECT p FROM Pengguna p WHERE p.statusDaftarulang = :statusDaftarulang")
     , @NamedQuery(name = "Pengguna.findByTanggalBolehDaftarulang", query = "SELECT p FROM Pengguna p WHERE p.tanggalBolehDaftarulang = :tanggalBolehDaftarulang")})
 public class Pengguna implements Serializable {
@@ -50,9 +49,6 @@ public class Pengguna implements Serializable {
     @Basic(optional = false)
     @Column(name = "nama")
     private String nama;
-    @Basic(optional = false)
-    @Column(name = "telefon")
-    private String telefon;
     @Column(name = "status_daftarulang")
     private Boolean statusDaftarulang;
     @Column(name = "tanggal_boleh_daftarulang")
@@ -70,11 +66,10 @@ public class Pengguna implements Serializable {
         this.iDPengguna = iDPengguna;
     }
 
-    public Pengguna(String iDPengguna, String email, String nama, String telefon) {
+    public Pengguna(String iDPengguna, String email, String nama) {
         this.iDPengguna = iDPengguna;
         this.email = email;
         this.nama = nama;
-        this.telefon = telefon;
     }
 
     public String getIDPengguna() {
@@ -99,14 +94,6 @@ public class Pengguna implements Serializable {
 
     public void setNama(String nama) {
         this.nama = nama;
-    }
-
-    public String getTelefon() {
-        return telefon;
-    }
-
-    public void setTelefon(String telefon) {
-        this.telefon = telefon;
     }
 
     public Boolean getStatusDaftarulang() {

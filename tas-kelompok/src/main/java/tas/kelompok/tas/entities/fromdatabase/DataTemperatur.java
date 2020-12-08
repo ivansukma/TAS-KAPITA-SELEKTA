@@ -22,11 +22,10 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
-import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
- * @author USER
+ * @author ivanr
  */
 @Entity
 @Table(name = "data_temperatur")
@@ -48,7 +47,6 @@ public class DataTemperatur implements Serializable {
     @Basic(optional = false)
     @Column(name = "tanggal_periksa")
     @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date tanggalPeriksa;
     @Basic(optional = false)
     @Column(name = "suhu_tubuh")

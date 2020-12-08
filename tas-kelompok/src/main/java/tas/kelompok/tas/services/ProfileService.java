@@ -65,7 +65,6 @@ public class ProfileService {
         Map<String, String> paramContact = new HashMap<>();
         paramContact.put("id", id);
         resultContact = restTemplate.getForObject(uri + "profile/contact/{id}" + getUserId(), ProfileContact.class, paramContact);
-        pengguna.setTelefon(resultContact.getPhone());
 
         //pengguna.setStatusDaftarulang(true);
         Date date = new Date();
@@ -124,7 +123,6 @@ public class ProfileService {
         pengguna.setNama(output.getUser().getName());
         pengguna.setIDPengguna(output.getUser().getId());
         pengguna.setEmail(output.getUser().getEmail());
-        pengguna.setTelefon("08123123123");
         penggunaservice.save(pengguna);
         return output.getUser().getId();
     }

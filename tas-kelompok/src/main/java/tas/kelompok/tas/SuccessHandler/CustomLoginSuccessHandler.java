@@ -51,19 +51,5 @@ public class CustomLoginSuccessHandler extends SimpleUrlAuthenticationSuccessHan
         }
         return url;
     }
-
-    public String getIdEmail(Authentication authentication) {
-        Pengguna pengguna = new Pengguna();
-
-        authentication = SecurityContextHolder.getContext().getAuthentication();
-        LoginOutput data = (LoginOutput) authentication.getPrincipal();
-        String url = "/login?error=true";
-        System.out.println(data);
-        pengguna.setIDPengguna(data.getUser().getId());
-        System.out.println(data.getUser().getId());
-        //pengguna.setEmail(data.getUser().getEmail());
-        //System.out.println(data.getUser().getEmail());
-        return url;
-    }
-
+    
 }
