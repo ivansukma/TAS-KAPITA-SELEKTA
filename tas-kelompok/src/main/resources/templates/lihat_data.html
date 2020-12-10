@@ -339,7 +339,6 @@
             <thead>
                 <tr>
                     <th>Nama</th>
-                    <th>Nomor Telefon</th>
                     <th>Suhu</th>
                     <th>Konfirmasi Suhu</th>
                 </tr>
@@ -349,7 +348,6 @@
                 <tr th:each="as : ${lihatDataTabel}">
                     
                     <td th:text="${as.idForm.idMahasiswa.nama}"></td>
-                    <td th:text="${as.idForm.idMahasiswa.telefon}"></td>
                     <td th:text="${as.suhuTubuh}"></td>
                     <td th:text="${as.konfirmasiSuhu}"></td>
                 </tr>
