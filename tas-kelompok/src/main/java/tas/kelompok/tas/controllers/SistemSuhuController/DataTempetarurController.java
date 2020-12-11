@@ -19,19 +19,24 @@ import tas.kelompok.tas.services.DataTemperaturService;
  *
  * @author USER
  */
-
 @Controller
 @RequestMapping("lihatdata")
 
 public class DataTempetarurController {
+
     @Autowired
     DataTemperaturService dataTemperaturService;
-    
+
     @GetMapping("")
-    public String dataSuhu(Model model){
+    public String dataSuhu(Model model) {
         model.addAttribute("lihatDataTabel", dataTemperaturService.getAll());
         return "lihat_data";
     }
-    
-    
+
+    @GetMapping("mahasiswa")
+    public String dataSuhuMahasiswa(Model model) {
+        model.addAttribute("lihatDataTabel", dataTemperaturService.getAll());
+        return "lihat_suhu_mahasiswa";
+    }
+
 }
