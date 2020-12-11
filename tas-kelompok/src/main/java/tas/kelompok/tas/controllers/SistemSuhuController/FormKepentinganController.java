@@ -74,6 +74,17 @@ public class FormKepentinganController {
         model.addAttribute("statusform", formKepentinganService.getByStatus(status));
         return "status_form";
     }
+    @GetMapping("statusmahasiswa")
+    public String formStatusMahasiswa(Model model) {
+        model.addAttribute("statusform", formKepentinganService.getByAllStatus());
+        return "status_mahasiswa";
+    }
+    
+    @GetMapping("statusmahasiswa/{status}")
+    public String formByStatusMahasiswa(Model model, @PathVariable String status) {
+        model.addAttribute("statusform", formKepentinganService.getByStatus(status));
+        return "status_mahasiswa";
+    }
     
            
 }
