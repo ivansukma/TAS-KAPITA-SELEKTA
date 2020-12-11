@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 08, 2020 at 11:56 AM
+-- Generation Time: Dec 11, 2020 at 01:33 PM
 -- Server version: 5.7.31
 -- PHP Version: 7.3.21
 
@@ -140,21 +140,6 @@ INSERT INTO `pengguna` (`ID_Pengguna`, `email`, `nama`, `status_daftarulang`, `t
 ('USER-00017', 'robertusbagaskara@gmail.com', 'Robertus Bagaskara Radite Putra', NULL, NULL),
 ('USER-00034', 'matthewadian@yahoo.com', 'Matthew Adian', NULL, NULL);
 
--- --------------------------------------------------------
-
---
--- Table structure for table `persetujuan_user`
---
-
-DROP TABLE IF EXISTS `persetujuan_user`;
-CREATE TABLE IF NOT EXISTS `persetujuan_user` (
-  `tanggal_isiform` date NOT NULL,
-  `id_kuesioner` int(11) DEFAULT NULL,
-  `id_gejala` int(11) DEFAULT NULL,
-  KEY `id_kuesioner` (`id_kuesioner`),
-  KEY `id_gejala` (`id_gejala`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
 --
 -- Constraints for dumped tables
 --
@@ -177,13 +162,6 @@ ALTER TABLE `form_kepentingan`
 --
 ALTER TABLE `kuesioner`
   ADD CONSTRAINT `kuesioner_ibfk_1` FOREIGN KEY (`id_form`) REFERENCES `form_kepentingan` (`id_form`);
-
---
--- Constraints for table `persetujuan_user`
---
-ALTER TABLE `persetujuan_user`
-  ADD CONSTRAINT `persetujuan_user_ibfk_1` FOREIGN KEY (`id_kuesioner`) REFERENCES `kuesioner` (`id`),
-  ADD CONSTRAINT `persetujuan_user_ibfk_2` FOREIGN KEY (`id_gejala`) REFERENCES `macam_gejala` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
