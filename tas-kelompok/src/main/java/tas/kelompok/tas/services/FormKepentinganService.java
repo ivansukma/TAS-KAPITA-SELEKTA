@@ -37,8 +37,8 @@ public class FormKepentinganService {
         return formKepentinganRepository.findByStatus(status);
     }
     
-    public void updateStatus(int id_form){
-        formKepentinganRepository.updateByStatus(id_form);
+    public void updateStatus(int id_form, String status){
+        formKepentinganRepository.updateByStatus(id_form, status);
     }
     
 }
