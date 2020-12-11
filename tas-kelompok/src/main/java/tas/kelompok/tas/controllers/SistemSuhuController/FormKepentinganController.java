@@ -5,17 +5,20 @@
  */
 package tas.kelompok.tas.controllers.SistemSuhuController;
 
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 import tas.kelompok.tas.entities.fromdatabase.FormKepentingan;
 import tas.kelompok.tas.entities.fromdatabase.Kuesioner;
 import tas.kelompok.tas.entities.fromdatabase.Pengguna;
@@ -46,13 +49,15 @@ public class FormKepentinganController {
     
 
     @PostMapping("save")
-    public String save(FormKepentingan formkepentingan, RedirectAttributes redirectAttributes, Model model) {
+    public RedirectView save(FormKepentingan formkepentingan, HttpServletRequest request, 
+    @ModelAttribute FormKepentingan formKepentingan, 
+    RedirectAttributes redirectAttributes) {
         formKepentinganService.save(formkepentingan);
         int id = formkepentingan.getIdForm();
         System.out.println(id);
-        redirectAttributes.addAttribute("idDataForm", id);
-        model.addAttribute("idData", id);
-        return "redirect:/kuesioner";
+        redirectAttributes.addFlashAttribute("idCoba", id);
+        //model.addAttribute("idData", id);
+        return new RedirectView("/kuesioner", true);
     }
     
     @GetMapping("formmasuk/{status}")
