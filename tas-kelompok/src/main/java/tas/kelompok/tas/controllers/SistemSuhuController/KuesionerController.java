@@ -29,20 +29,21 @@ public class KuesionerController {
 
     @Autowired
     KuesionerService kuesionerService;
+    FormKepentinganService formKepentinganService;
 
     @GetMapping("")
     public String pengguna(Model model, HttpServletRequest request) {
         Map<String, ?> inputFlashMap = RequestContextUtils.getInputFlashMap(request);
         FormKepentingan formkepentingan = (FormKepentingan) inputFlashMap.get("idCoba");
-        System.out.println(formkepentingan);
+        //System.out.println(formkepentingan.getIdForm());
+        int id = formkepentingan.getIdForm();
         model.addAttribute("kuesionerForm", new Kuesioner());
+        model.addAttribute("coba", id);
         return "kuesioner";
     }
 
     @PostMapping("save")
-    public String save(Kuesioner kuesioner) {
-       
-        
+    public String save(Kuesioner kuesioner, HttpServletRequest request) {
         kuesionerService.save(kuesioner);
         return "redirect:/kuesioner";
     }

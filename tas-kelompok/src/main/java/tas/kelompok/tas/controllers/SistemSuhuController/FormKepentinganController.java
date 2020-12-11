@@ -37,7 +37,7 @@ public class FormKepentinganController {
     @Autowired
     FormKepentinganService formKepentinganService;
     ProfileService profileService;
-    
+
     @GetMapping("")
     public String pengguna(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -46,55 +46,52 @@ public class FormKepentinganController {
         model.addAttribute("idForm", output.getUser().getId());
         return "formkepentingan";
     }
-    
 
     @PostMapping("save")
-    public RedirectView save(FormKepentingan formkepentingan, HttpServletRequest request, 
-    @ModelAttribute FormKepentingan formKepentingan, 
-    RedirectAttributes redirectAttributes) {
+    public RedirectView save(@ModelAttribute FormKepentingan formkepentingan, HttpServletRequest request,
+            RedirectAttributes redirectAttributes) {
         formKepentinganService.save(formkepentingan);
-        int id = formkepentingan.getIdForm();
-        System.out.println(id);
-        redirectAttributes.addFlashAttribute("idCoba", id);
+        //int id = formkepentingan.getIdForm();
+        //System.out.println(id);
+        redirectAttributes.addFlashAttribute("idCoba", formkepentingan);
         //model.addAttribute("idData", id);
         return new RedirectView("/kuesioner", true);
     }
-    
+
     @GetMapping("formmasuk/{status}")
     public String formMasuk(Model model, @PathVariable String status) {
         model.addAttribute("lihatformmasuk", formKepentinganService.getByStatus(status));
         return "lihat_form";
     }
-    
+
     @GetMapping("update/{status}/{id_form}")
     public String updateStatus(Model model, @PathVariable int id_form, @PathVariable String status) {
         formKepentinganService.updateStatus(id_form, status);
         return "redirect:/formkepentingan/formmasuk/menunggu";
     }
-    
-    
+
     @GetMapping("status")
     public String formStatus(Model model) {
         model.addAttribute("statusform", formKepentinganService.getByAllStatus());
         return "status_form";
     }
-    
+
     @GetMapping("status/{status}")
     public String formByStatus(Model model, @PathVariable String status) {
         model.addAttribute("statusform", formKepentinganService.getByStatus(status));
         return "status_form";
     }
+
     @GetMapping("statusmahasiswa")
     public String formStatusMahasiswa(Model model) {
         model.addAttribute("statusform", formKepentinganService.getByAllStatus());
         return "status_mahasiswa";
     }
-    
+
     @GetMapping("statusmahasiswa/{status}")
     public String formByStatusMahasiswa(Model model, @PathVariable String status) {
         model.addAttribute("statusform", formKepentinganService.getByStatus(status));
         return "status_mahasiswa";
     }
-    
-           
+
 }

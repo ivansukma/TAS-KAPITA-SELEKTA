@@ -349,7 +349,7 @@ and open the template in the editor.
                     <br>
                 </div>
                 <form th:object="${kuesionerForm}" th:action="@{/kuesioner/save}" method="POST">
-                    <input type="hidden" th:attr="name='idForm'" th:value="${idData}"><br>
+                    <input type="hidden" th:attr="name='idForm'" th:value="${coba}"><br>
                     Selama 2 minggu pernah keluar kota ?
                     <select th:field="*{kunjunganLuarkota}" class="form-control">
                         <option value="Ya">Ya</option>
