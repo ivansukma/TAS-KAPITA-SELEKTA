@@ -23,6 +23,6 @@ public interface FormKepentinganRepository extends JpaRepository<FormKepentingan
     @Query(value = "SELECT * FROM form_kepentingan WHERE status = :status", nativeQuery = true)
     List<FormKepentingan> findByStatus(@Param("status") String status);
     
-    @Query(value = "UPDATE form_kepentingan SET status = 'diterima' WHERE id_form = :idForm", nativeQuery = true)
-    void updateByStatus(@Param("idForm") int idForm);
+    @Query(value = "UPDATE form_kepentingan SET status = 'diterima' WHERE id_form = :id_form", nativeQuery = true)
+    void updateByStatus(@Param(value = "id_form") int id_form);
 }

@@ -57,8 +57,8 @@ public class FormKepentinganController {
     }
     
     @GetMapping("update/{idForm}")
-    public String updateStatus(Model model, @PathVariable int idForm) {
-        formKepentinganService.updateStatus(idForm);
+    public String updateStatus(Model model, @PathVariable int id_form) {
+        formKepentinganService.updateStatus(id_form);
         return "lihat_form";
     }
     
