@@ -6,7 +6,9 @@
 package tas.kelompok.tas.repositories;
 
 import java.util.List;
+import javax.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,6 +25,8 @@ public interface FormKepentinganRepository extends JpaRepository<FormKepentingan
     @Query(value = "SELECT * FROM form_kepentingan WHERE status = :status", nativeQuery = true)
     List<FormKepentingan> findByStatus(@Param("status") String status);
     
+    @Transactional
+    @Modifying
     @Query(value = "UPDATE form_kepentingan SET status = 'diterima' WHERE id_form = :id_form", nativeQuery = true)
     void updateByStatus(@Param(value = "id_form") int id_form);
 }

@@ -64,7 +64,7 @@ public class FormKepentinganController {
     @GetMapping("update/{id_form}")
     public String updateStatus(Model model, @PathVariable int id_form) {
         formKepentinganService.updateStatus(id_form);
-        return "lihat_form";
+        return "redirect:/formkepentingan/formmasuk/menunggu";
     }
     
     
