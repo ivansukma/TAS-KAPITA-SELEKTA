@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import tas.kelompok.tas.entities.fromdatabase.FormKepentingan;
 import tas.kelompok.tas.entities.fromdatabase.Kuesioner;
 import tas.kelompok.tas.entities.fromdatabase.Pengguna;
@@ -45,8 +46,12 @@ public class FormKepentinganController {
     
 
     @PostMapping("save")
-    public String save(FormKepentingan formkepentingan) {
+    public String save(FormKepentingan formkepentingan, RedirectAttributes redirectAttributes, Model model) {
         formKepentinganService.save(formkepentingan);
+        int id = formkepentingan.getIdForm();
+        System.out.println(id);
+        redirectAttributes.addAttribute("idDataForm", id);
+        model.addAttribute("idData", id);
         return "redirect:/kuesioner";
     }
     
