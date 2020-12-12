@@ -37,6 +37,7 @@ public class KuesionerController {
         FormKepentingan formkepentingan = (FormKepentingan) inputFlashMap.get("idCoba");
         //System.out.println(formkepentingan.getIdForm());
         int id = formkepentingan.getIdForm();
+        System.out.println(id);
         model.addAttribute("kuesionerForm", new Kuesioner());
         model.addAttribute("coba", id);
         return "kuesioner";
