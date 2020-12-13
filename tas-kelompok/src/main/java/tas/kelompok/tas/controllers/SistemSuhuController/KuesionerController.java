@@ -46,6 +46,6 @@ public class KuesionerController {
     @PostMapping("save")
     public String save(Kuesioner kuesioner, HttpServletRequest request) {
         kuesionerService.save(kuesioner);
-        return "redirect:/formkepentingan";
+        return "index";
     }
 }
