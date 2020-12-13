@@ -6,7 +6,6 @@
 package tas.kelompok.tas.entities.fromdatabase;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -17,14 +16,12 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author ivanr
+ * @author USER
  */
 @Entity
 @Table(name = "pengguna")
@@ -33,9 +30,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Pengguna.findAll", query = "SELECT p FROM Pengguna p")
     , @NamedQuery(name = "Pengguna.findByIDPengguna", query = "SELECT p FROM Pengguna p WHERE p.iDPengguna = :iDPengguna")
     , @NamedQuery(name = "Pengguna.findByEmail", query = "SELECT p FROM Pengguna p WHERE p.email = :email")
-    , @NamedQuery(name = "Pengguna.findByNama", query = "SELECT p FROM Pengguna p WHERE p.nama = :nama")
-    , @NamedQuery(name = "Pengguna.findByStatusDaftarulang", query = "SELECT p FROM Pengguna p WHERE p.statusDaftarulang = :statusDaftarulang")
-    , @NamedQuery(name = "Pengguna.findByTanggalBolehDaftarulang", query = "SELECT p FROM Pengguna p WHERE p.tanggalBolehDaftarulang = :tanggalBolehDaftarulang")})
+    , @NamedQuery(name = "Pengguna.findByNama", query = "SELECT p FROM Pengguna p WHERE p.nama = :nama")})
 public class Pengguna implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -49,11 +44,6 @@ public class Pengguna implements Serializable {
     @Basic(optional = false)
     @Column(name = "nama")
     private String nama;
-    @Column(name = "status_daftarulang")
-    private Boolean statusDaftarulang;
-    @Column(name = "tanggal_boleh_daftarulang")
-    @Temporal(TemporalType.DATE)
-    private Date tanggalBolehDaftarulang;
     @OneToMany(mappedBy = "idAdmin", fetch = FetchType.LAZY)
     private List<FormKepentingan> formKepentinganList;
     @OneToMany(mappedBy = "idMahasiswa", fetch = FetchType.LAZY)
@@ -94,22 +84,6 @@ public class Pengguna implements Serializable {
 
     public void setNama(String nama) {
         this.nama = nama;
-    }
-
-    public Boolean getStatusDaftarulang() {
-        return statusDaftarulang;
-    }
-
-    public void setStatusDaftarulang(Boolean statusDaftarulang) {
-        this.statusDaftarulang = statusDaftarulang;
-    }
-
-    public Date getTanggalBolehDaftarulang() {
-        return tanggalBolehDaftarulang;
-    }
-
-    public void setTanggalBolehDaftarulang(Date tanggalBolehDaftarulang) {
-        this.tanggalBolehDaftarulang = tanggalBolehDaftarulang;
     }
 
     @XmlTransient

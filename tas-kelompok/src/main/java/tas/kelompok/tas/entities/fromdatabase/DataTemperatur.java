@@ -26,7 +26,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
- * @author ivanr
+ * @author USER
  */
 @Entity
 @Table(name = "data_temperatur")
