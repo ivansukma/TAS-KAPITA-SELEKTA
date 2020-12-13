@@ -15,10 +15,7 @@ and open the template in the editor.
 
             /* BASIC */
 
-            html {
-                background-color: #56baed;
-            }
-
+            
             body {
                 font-family: "Poppins", sans-serif;
                 height: 100vh;
@@ -307,7 +304,7 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
-    <body style="background-image: url('https://www.rjmprogramming.com.au/HTMLCSS/faint_grass_pattern_204850.jpg');height: 100%">
+    <body style="background-image: url('https://www.rjmprogramming.com.au/HTMLCSS/faint_grass_pattern_204850.jpg');height: 100%; padding-bottom: 50px;">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand">Sistem Suhu Tubuh</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -355,24 +352,24 @@ and open the template in the editor.
                 </div>
                 <form th:object="${kuesionerForm}" th:action="@{/kuesioner/save}" method="POST">
                     <input type="hidden" th:attr="name='idForm'" th:value="${coba}"><br>
-                    Selama 2 minggu pernah keluar kota ?
+                    Apakah dalam 2 minggu pernah keluar kota ?
                     <select th:field="*{kunjunganLuarkota}" class="form-control">
                         <option value="Ya">Ya</option>
                         <option value="Tidak">Tidak</option>
                     </select><br><br>
-                    Apakah terdapat gejala (Batuk,Radang,Sesak Nafas) ?<br>
+                    Apakah terdapat gejala terkait COVID-19 ?<br>
                     Batuk <input type="checkbox" th:field="*{gejalaUmum}" value="Batuk" /><br>
                     Radang <input type="checkbox" th:field="*{gejalaUmum}" value="Radang" /><br>
                     Sesak Nafas <input type="checkbox" th:field="*{gejalaUmum}" value="Sesak Nafas" /><br>
                     Pilek <input type="checkbox" th:field="*{gejalaUmum}" value="Pilek" /><br>
                     Panas <input type="checkbox" th:field="*{gejalaUmum}" value="Panas" />
                     <br><br>
-                    Selama 2 minggu pernah ke rumahsakit ?
+                    Apakah dalam 2 minggu pernah ke rumahsakit ?
                     <select th:field="*{kunjunganRS}" class="form-control">
                         <option value="Ya">Ya</option>
                         <option value="Tidak">Tidak</option>
                     </select><br>
-                    Pernah dirawat dengan status covid-19 ? : 
+                    Apakah dalam dirawat dengan status covid-19 ? : 
                     <select th:field="*{statusPernahdirawatCovid19}" class="form-control">
                         <option value="Ya">Ya</option>
                         <option value="Tidak">Tidak</option>
