@@ -23,7 +23,7 @@ and open the template in the editor.
             }
         </style>
     </head>
-    <body>
+    <body style="background-image: url('https://www.rjmprogramming.com.au/HTMLCSS/faint_grass_pattern_204850.jpg');">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="#">Sistem Suhu Tubuh</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,7 +38,7 @@ and open the template in the editor.
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/inputsuhu}">Input Suhu</a>
                     </li>
-                     <li class="nav-item">
+                    <li class="nav-item">
                         <a class="nav-link" th:href="@{/lihatdata}">Lihat Data</a>
                     </li>
                     <!--<li class="nav-item dropdown">
@@ -58,34 +58,38 @@ and open the template in the editor.
                 </ul>
             </div>
         </nav>
-    <center>
+
         <br>
-        
+
         <br>
-        <div class="container">
-            <div><h3 style="margin-bottom: 30px">Profile Data</h3></div>
-        <table border="1" class="table table-striped table-dark">
-            <tr th:each="as : ${profile}">
-                <td>ID</td>
-                <td th:text="${as.id}"></td>
-            </tr>
-            <tr th:each="as : ${profile}">
-                <td>NAME</td>
-                <td th:text="${as.name}"></td>
-            </tr>
-            <tr th:each="as : ${profile}">
-                <td>BIRTHDATE</td>
-                <td th:text="${as.birthDate}"></td>
-            </tr>
-            <tr th:each="as : ${profile}">
-                <td>GENDER</td>
-                <td th:text="${as.gender}"></td>
-            </tr>
-            <tr th:each="as : ${profile}">
-                <td>EMAIL</td>
-                <td th:text="${as.email}"></td>
-            </tr>
-        </table>
+        <div class="container px-5">
+            <div class="row gx-5">
+                <div class="col">
+                    <div><h3 style="margin-bottom: 30px">Profile Data</h3></div>
+                    <table border="1" class="table table-striped table-dark">
+                        <tr th:each="as : ${profile}">
+                            <td>ID</td>
+                            <td th:text="${as.id}"></td>
+                        </tr>
+                        <tr th:each="as : ${profile}">
+                            <td>NAME</td>
+                            <td th:text="${as.name}"></td>
+                        </tr>
+                        <tr th:each="as : ${profile}">
+                            <td>BIRTHDATE</td>
+                            <td th:text="${as.birthDate}"></td>
+                        </tr>
+                        <tr th:each="as : ${profile}">
+                            <td>GENDER</td>
+                            <td th:text="${as.gender}"></td>
+                        </tr>
+                        <tr th:each="as : ${profile}">
+                            <td>EMAIL</td>
+                            <td th:text="${as.email}"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
         </div>
         <!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
             Update Data
@@ -121,15 +125,15 @@ and open the template in the editor.
                 </div>
             </div>
         </div>-->
-    </center>
-    <div class="footer">
-        <p>© 2020 Copyright: 
-            <a>Ivan,Matthew and Deli</a>
-            <img src="https://www.flaticon.com/svg/static/icons/svg/197/197559.svg" style="width:15px"/>
-        </p>
-    </div>
-    <!-- jQuery and JS bundle w/ Popper.js -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-</body>
+
+        <div class="footer" style="background-color: #405161;">
+            <p>© 2020 Copyright: 
+                <a>Ivan,Matthew and Deli</a>
+                <img src="https://www.flaticon.com/svg/static/icons/svg/197/197559.svg" style="width:15px"/>
+            </p>
+        </div>
+        <!-- jQuery and JS bundle w/ Popper.js -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    </body>
 </html>

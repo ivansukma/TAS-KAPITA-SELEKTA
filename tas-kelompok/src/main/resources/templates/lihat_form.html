@@ -304,7 +304,7 @@ and open the template in the editor.
             }
         </style>
     </head>
-    <body>
+   <body style="background-image: url('https://www.rjmprogramming.com.au/HTMLCSS/faint_grass_pattern_204850.jpg');">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="#">Sistem Suhu Tubuh</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -341,32 +341,32 @@ and open the template in the editor.
         </nav>
         <br>
         <div class="container">
-        <table border="1" class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Nama</th>
-                    <th>Kepentingan</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
+            <table border="1" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Nama</th>
+                        <th>Kepentingan</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
 
-                <tr th:each="as : ${lihatformmasuk}">
-                    <td th:text="${as.idMahasiswa.nama}"></td>
-                    <td th:text="${as.kepentingan}"></td>
-                    <td>
-                        <a class="btn btn-success" th:href="@{/formkepentingan/update/diterima/{id}(id=${as.idForm})}" role="button">Terima</a>
-                        <a class="btn btn-danger" th:href="@{/formkepentingan/update/ditolak/{id}(id=${as.idForm})}" role="button">Tolak</a>
-                    </td>
-                </tr>
+                    <tr th:each="as : ${lihatformmasuk}">
+                        <td th:text="${as.idMahasiswa.nama}"></td>
+                        <td th:text="${as.kepentingan}"></td>
+                        <td>
+                            <a class="btn btn-success" th:href="@{/formkepentingan/update/diterima/{id}(id=${as.idForm})}" role="button">Terima</a>
+                            <a class="btn btn-danger" th:href="@{/formkepentingan/update/ditolak/{id}(id=${as.idForm})}" role="button">Tolak</a>
+                        </td>
+                    </tr>
 
-            </tbody>
-        </table>
-        <br>
-        <a class="btn btn-primary" th:href="@{/lihatdata}" role="button">Back To Lihat Data</a>
-        <a class="btn btn-primary" th:href="@{/formkepentingan/status}" role="button">Show All Status</a>
+                </tbody>
+            </table>
+            <br>
+            <a class="btn btn-primary" th:href="@{/lihatdata}" role="button">Back To Lihat Data</a>
+            <a class="btn btn-primary" th:href="@{/formkepentingan/status}" role="button">Show All Status</a>
         </div>
-        <div class="footer">
+        <div class="footer" style="background-color: #405161;">
             <p>© 2020 Copyright: 
                 <a>Ivan,Matthew and Deli</a>
                 <img src="https://www.flaticon.com/svg/static/icons/svg/197/197559.svg" style="width:15px"/>
