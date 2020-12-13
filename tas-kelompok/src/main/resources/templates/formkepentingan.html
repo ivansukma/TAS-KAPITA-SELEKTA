@@ -356,10 +356,12 @@ and open the template in the editor.
                 <form th:object="${kepentinganForm}" th:action="@{/formkepentingan/save}" method="POST">
                     <input type="hidden" th:attr="name='idMahasiswa'" th:value="${idForm}"><br>
                     <input type="hidden" th:attr="name='idAdmin'" value="USER-00016"><br>
-                    <input type="text" placeholder="Kepentingan" th:field="*{kepentingan}"><br>
-                    <input type="text" placeholder="Riwayat Penyakit" th:field="*{riwayatPenyakit}"><br>
+                    Kepentingan : <br>
+                    <input type="text" th:field="*{kepentingan}"><br>
+                    Riwayat Penyakit : <br>
+                    <input type="text" th:field="*{riwayatPenyakit}"><br>
+                    Fakultas Kunjungan : <br>
                     <select th:field="*{fakultasKunjungan}" class="form-control">
-                       
                         <option value="FTI">FTI</option>
                         <option value="FBS">FBS</option>
                         <option value="FKIP">FKIP</option>
