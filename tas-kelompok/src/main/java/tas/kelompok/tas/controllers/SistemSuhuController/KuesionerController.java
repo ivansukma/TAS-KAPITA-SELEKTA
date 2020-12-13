@@ -37,6 +37,7 @@ public class KuesionerController {
         FormKepentingan formkepentingan = (FormKepentingan) inputFlashMap.get("idCoba");
         //System.out.println(formkepentingan.getIdForm());
         int id = formkepentingan.getIdForm();
+        System.out.println(id);
         model.addAttribute("kuesionerForm", new Kuesioner());
         model.addAttribute("coba", id);
         return "kuesioner";
@@ -45,6 +46,6 @@ public class KuesionerController {
     @PostMapping("save")
     public String save(Kuesioner kuesioner, HttpServletRequest request) {
         kuesionerService.save(kuesioner);
-        return "redirect:/kuesioner";
+        return "redirect:/formkepentingan";
     }
 }
