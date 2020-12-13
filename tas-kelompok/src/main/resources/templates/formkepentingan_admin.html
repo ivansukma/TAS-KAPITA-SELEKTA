@@ -361,6 +361,7 @@ and open the template in the editor.
                 color: white;
                 text-align: center;
             }
+            
         </style>
         <title>Form Kepentingan</title>
         <meta charset="UTF-8">
@@ -411,11 +412,14 @@ and open the template in the editor.
                 </div>
                 <form th:object="${suhuForm}" th:action="@{/inputsuhu/save}" method="POST">
 
-
-                    <input type="text" placeholder="Id Form" th:field="*{idForm}"><br>
-                    <input type="date" placeholder="Tanggal Periksa" th:field="*{tanggalPeriksa}"><br>
-                    <input type="text" placeholder="Suhu" th:field="*{suhuTubuh}"><br>
+                    Id Form : <br>
+                    <input type="text" th:field="*{idForm}"><br>
+                    Tanggal Kedatangan : <br>
+                    <input type="date" th:field="*{tanggalPeriksa}"><br>
+                    Suhu Tubuh : <br>
+                    <input type="text" th:field="*{suhuTubuh}"><br>
                     <!--<input type="text" placeholder="Konfirmasi Suhu" th:field="*{konfirmasiSuhu}"><br>-->
+                    Konfirmasi Suhu : <br>
                     <select class="form-control" name="kriteriasuhu-list" th:field="*{konfirmasiSuhu}">
                         <option value="true">Suhu Kurang dari 37 Memenuhi</option>
                         <option value="false">Suhu Lebih dari 37 Tidak Memenuhi</option>
