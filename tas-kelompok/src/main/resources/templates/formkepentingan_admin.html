@@ -15,10 +15,7 @@ and open the template in the editor.
 
             /* BASIC */
 
-            html {
-                background-color: #56baed;
-            }
-
+           
             body {
                 font-family: "Poppins", sans-serif;
                 height: 100vh;
@@ -367,7 +364,11 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
+<<<<<<< Updated upstream
     <body style="background-size: 100%; background-image: url('https://www.rjmprogramming.com.au/HTMLCSS/faint_grass_pattern_204850.jpg');height: 100%">
+=======
+    <body style="background-image: url('https://www.rjmprogramming.com.au/HTMLCSS/faint_grass_pattern_204850.jpg');height: 100%; padding-bottom: 50px;">
+>>>>>>> Stashed changes
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="#">Sistem Suhu Tubuh</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -414,7 +415,7 @@ and open the template in the editor.
 
                     Id Form : <br>
                     <input type="text" th:field="*{idForm}"><br>
-                    Tanggal Kedatangan : <br>
+                    Tanggal Cek Suhu : <br>
                     <input type="date" th:field="*{tanggalPeriksa}"><br>
                     Suhu Tubuh : <br>
                     <input type="text" th:field="*{suhuTubuh}"><br>
@@ -424,6 +425,7 @@ and open the template in the editor.
                         <option value="true">Suhu Kurang dari 37 Memenuhi</option>
                         <option value="false">Suhu Lebih dari 37 Tidak Memenuhi</option>
                     </select>
+                    <br><br>
                     <input type="submit" value="Submit">
 
                 </form>
