@@ -302,7 +302,7 @@ and open the template in the editor.
             }
         </style>
     </head>
-    <body style="background-image: url('https://www.rjmprogramming.com.au/HTMLCSS/faint_grass_pattern_204850.jpg');height: 100%">
+    <body style="background-image: url('https://www.rjmprogramming.com.au/HTMLCSS/faint_grass_pattern_204850.jpg');height: 100%; padding-bottom: 50px;">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="#">Sistem Suhu Tubuh</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -344,6 +344,7 @@ and open the template in the editor.
                     <tr>
                         <th>Nama</th>
                         <th>Kepentingan</th>
+                        <th>Riwayat Penyakit</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -352,6 +353,7 @@ and open the template in the editor.
                     <tr th:each="as : ${lihatformmasuk}">
                         <td th:text="${as.idMahasiswa.nama}"></td>
                         <td th:text="${as.kepentingan}"></td>
+                        <td th:text="${as.riwayatPenyakit}"></td>
                         <td>
                             <a class="btn btn-success" th:href="@{/formkepentingan/update/diterima/{id}(id=${as.idForm})}" role="button">Terima</a>
                             <a class="btn btn-danger" th:href="@{/formkepentingan/update/ditolak/{id}(id=${as.idForm})}" role="button">Tolak</a>
