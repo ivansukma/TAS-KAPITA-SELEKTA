@@ -41,4 +41,9 @@ public class FormKepentinganService {
         formKepentinganRepository.updateByStatus(id_form, status);
     }
     
+    public FormKepentingan getForUser (String id_mahasiswa){
+        return formKepentinganRepository.findForStudent(id_mahasiswa);
+    }
+    
+    
 }

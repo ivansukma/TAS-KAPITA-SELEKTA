@@ -6,6 +6,8 @@
 package tas.kelompok.tas.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import tas.kelompok.tas.services.LoginRestService;
 import tas.kelompok.tas.entities.rest.LoginInput;
+import tas.kelompok.tas.entities.rest.LoginOutput;
 import tas.kelompok.tas.services.ProfileService;
 import tas.kelompok.tas.entities.rest.ProfileInfo;
 import tas.kelompok.tas.entities.rest.ProfileAddress;
@@ -60,7 +63,10 @@ public class RestController {
 
     @GetMapping("")
     public String profileBasicLearner(Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        LoginOutput output = (LoginOutput) authentication.getPrincipal();
         model.addAttribute("profile", profileService.getProfileInfo(id));
+        model.addAttribute("idForm", output.getUser().getId());
         System.out.println(profileService.getProfileInfo(id));
         System.out.println(profileService.listLogin(id));
         return "profile_basic_learner";

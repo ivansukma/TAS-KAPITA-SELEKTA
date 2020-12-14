@@ -33,7 +33,7 @@ public class DataTempetarurController {
         return "lihat_data";
     }
 
-    @GetMapping("mahasiswa")
+    @GetMapping("suhumahasiswa/{id_mahasiswa}")
     public String dataSuhuMahasiswa(Model model) {
         model.addAttribute("lihatDataTabel", dataTemperaturService.getAll());
         return "lihat_suhu_mahasiswa";

@@ -82,16 +82,11 @@ public class FormKepentinganController {
         return "status_form";
     }
 
-    @GetMapping("statusmahasiswa")
-    public String formStatusMahasiswa(Model model) {
-        model.addAttribute("statusform", formKepentinganService.getByAllStatus());
+    @GetMapping("statusmahasiswa/{id_mahasiswa}")
+    public String formStatusMahasiswa(Model model, @PathVariable String id_mahasiswa) {
+        model.addAttribute("statusform", formKepentinganService.getForUser(id_mahasiswa));
         return "status_mahasiswa";
     }
 
-    @GetMapping("statusmahasiswa/{status}")
-    public String formByStatusMahasiswa(Model model, @PathVariable String status) {
-        model.addAttribute("statusform", formKepentinganService.getByStatus(status));
-        return "status_mahasiswa";
-    }
 
 }
