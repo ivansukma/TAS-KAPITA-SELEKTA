@@ -37,11 +37,11 @@ public class DataTempetarurController {
         return "lihat_data";
     }
 
-    @GetMapping("suhumahasiswa/{id}")
-    public String dataSuhuMahasiswa(Model model, @PathVariable String id) {
+    @GetMapping("suhumahasiswa/{id_mahasiswa}")
+    public String dataSuhuMahasiswa(Model model, @PathVariable String id_mahasiswa) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         LoginOutput output = (LoginOutput) authentication.getPrincipal();
-        model.addAttribute("lihatDataTabel", dataTemperaturService.getforUser(id));
+        model.addAttribute("lihatDataTabel", dataTemperaturService.getforUser(id_mahasiswa));
         model.addAttribute("idForm", output.getUser().getId());
         return "lihat_suhu_mahasiswa";
     }

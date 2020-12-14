@@ -29,8 +29,8 @@ public class DataTemperaturService {
         return dataTemperaturRepository.save(dataTemperatur);
     }
     
-    public List<DataTemperatur> getforUser(String id){
-        return dataTemperaturRepository.findForStudent(id);
+    public List<DataTemperatur> getforUser(String id_mahasiswa){
+        return dataTemperaturRepository.findForStudent(id_mahasiswa);
     }
     
     
