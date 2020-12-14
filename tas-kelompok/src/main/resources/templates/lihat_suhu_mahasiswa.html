@@ -10,7 +10,7 @@
 
             /* BASIC */
 
-            
+
 
             body {
                 font-family: "Poppins", sans-serif;
@@ -345,7 +345,6 @@
         <table border="1" class="table table-striped table-dark">
             <thead>
                 <tr>
-                    <th>Nama</th>
                     <th>Suhu</th>
                     <th>Konfirmasi Suhu</th>
                 </tr>
@@ -353,8 +352,6 @@
             <tbody>
 
                 <tr th:each="as : ${lihatDataTabel}">
-
-                    <td th:text="${as.idForm.idMahasiswa.nama}"></td>
                     <td th:text="${as.suhuTubuh}"></td>
                     <!--<td th:text="${as.konfirmasiSuhu}"></td>-->
                     <td  th:if="${as.konfirmasiSuhu} == true">Suhu Memenuhi</td>
