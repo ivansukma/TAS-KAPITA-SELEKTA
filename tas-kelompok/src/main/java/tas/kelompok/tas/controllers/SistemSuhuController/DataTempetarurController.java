@@ -11,6 +11,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import tas.kelompok.tas.entities.fromdatabase.DataTemperatur;
@@ -36,11 +37,11 @@ public class DataTempetarurController {
         return "lihat_data";
     }
 
-    @GetMapping("mahasiswa")
-    public String dataSuhuMahasiswa(Model model) {
+    @GetMapping("suhumahasiswa/{id}")
+    public String dataSuhuMahasiswa(Model model, @PathVariable String id) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         LoginOutput output = (LoginOutput) authentication.getPrincipal();
-        model.addAttribute("lihatDataTabel", dataTemperaturService.getAll());
+        model.addAttribute("lihatDataTabel", dataTemperaturService.getforUser(id));
         model.addAttribute("idForm", output.getUser().getId());
         return "lihat_suhu_mahasiswa";
     }

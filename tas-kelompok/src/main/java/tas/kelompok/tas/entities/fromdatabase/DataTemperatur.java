@@ -11,8 +11,6 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -41,10 +39,9 @@ public class DataTemperatur implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
-    private Integer id;
+    private String id;
     @Basic(optional = false)
     @Column(name = "tanggal_periksa")
     @Temporal(TemporalType.DATE)
@@ -63,22 +60,22 @@ public class DataTemperatur implements Serializable {
     public DataTemperatur() {
     }
 
-    public DataTemperatur(Integer id) {
+    public DataTemperatur(String id) {
         this.id = id;
     }
 
-    public DataTemperatur(Integer id, Date tanggalPeriksa, double suhuTubuh, boolean konfirmasiSuhu) {
+    public DataTemperatur(String id, Date tanggalPeriksa, double suhuTubuh, boolean konfirmasiSuhu) {
         this.id = id;
         this.tanggalPeriksa = tanggalPeriksa;
         this.suhuTubuh = suhuTubuh;
         this.konfirmasiSuhu = konfirmasiSuhu;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
