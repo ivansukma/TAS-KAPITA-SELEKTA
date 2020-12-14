@@ -11,6 +11,8 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -20,7 +22,6 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
-import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -39,13 +40,13 @@ public class DataTemperatur implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
-    private String id;
+    private Integer id;
     @Basic(optional = false)
     @Column(name = "tanggal_periksa")
     @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date tanggalPeriksa;
     @Basic(optional = false)
     @Column(name = "suhu_tubuh")
@@ -60,22 +61,22 @@ public class DataTemperatur implements Serializable {
     public DataTemperatur() {
     }
 
-    public DataTemperatur(String id) {
+    public DataTemperatur(Integer id) {
         this.id = id;
     }
 
-    public DataTemperatur(String id, Date tanggalPeriksa, double suhuTubuh, boolean konfirmasiSuhu) {
+    public DataTemperatur(Integer id, Date tanggalPeriksa, double suhuTubuh, boolean konfirmasiSuhu) {
         this.id = id;
         this.tanggalPeriksa = tanggalPeriksa;
         this.suhuTubuh = suhuTubuh;
         this.konfirmasiSuhu = konfirmasiSuhu;
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

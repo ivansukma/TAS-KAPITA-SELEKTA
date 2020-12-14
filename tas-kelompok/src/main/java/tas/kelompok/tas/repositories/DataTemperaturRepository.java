@@ -17,6 +17,11 @@ import tas.kelompok.tas.entities.fromdatabase.FormKepentingan;
  * @author USER
  */
 public interface DataTemperaturRepository extends JpaRepository<DataTemperatur, Integer> {
-    @Query(value = "SELECT * FROM data_temperatur WHERE id = :id", nativeQuery = true)
-    List<DataTemperatur> findForStudent(@Param("id") String id);
+
+    @Query(value = "SELECT * FROM data_temperatur WHERE id_form IN\n"
+            + "(\n"
+            + "    SELECT id_form FROM form_kepentingan WHERE form_kepentingan.id_mahasiswa = :id_mahasiswa\n"
+            + "\n"
+            + ")", nativeQuery = true)
+    List<DataTemperatur> findForStudent(@Param("id_mahasiswa") String id_mahasiswa);
 }
