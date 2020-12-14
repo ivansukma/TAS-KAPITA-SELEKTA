@@ -84,9 +84,11 @@ public class FormKepentinganController {
 
     @GetMapping("statusmahasiswa/{id_mahasiswa}")
     public String formStatusMahasiswa(Model model, @PathVariable String id_mahasiswa) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        LoginOutput output = (LoginOutput) authentication.getPrincipal();
         model.addAttribute("statusform", formKepentinganService.getForUser(id_mahasiswa));
+        model.addAttribute("idForm", output.getUser().getId());
         return "status_mahasiswa";
     }
-
 
 }
