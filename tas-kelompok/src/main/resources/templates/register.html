@@ -129,7 +129,7 @@ and open the template in the editor.
                 transform: scale(0.95);
             }
 
-            input[type=text] {
+            input[type=text], input[type=password] {
                 background-color: #f6f6f6;
                 border: none;
                 color: #0d0d0d;
@@ -150,12 +150,12 @@ and open the template in the editor.
                 border-radius: 5px 5px 5px 5px;
             }
 
-            input[type=text]:focus {
+            input[type=text]:focus, input[type=password]:focus {
                 background-color: #fff;
                 border-bottom: 2px solid #5fbae9;
             }
 
-            input[type=text]:placeholder {
+            input[type=text]:placeholder, input[type=password]:placeholder {
                 color: #cccccc;
             }
 
@@ -298,28 +298,29 @@ and open the template in the editor.
 
                 <div class="fadeIn first">
                     <br>
-                    <h1 style="text-align: center">Register Kuy !</h1>
+                    <h1 style="text-align: center">Register Form </h1>
                     <br>
                 </div>
                 <form th:action="@{/register}" th:object="${register}" method="POST">
-                    <input type="text" id="txtId" th:field="*{birthDate}" placeholder="Birthdate"><br><br>
-                    <input type="text" id="txtPass" th:field="*{currentCompany}"placeholder="Current Company"><br><br>
-                    <input type="text" id="txtId" th:field="*{degree}" placeholder="Degree"><br><br>
-                    <input type="text" id="txtPass" th:field="*{email}"placeholder="Email"><br><br>
-                    <input type="text" id="txtId" th:field="*{gender}"placeholder="Gender"><br><br>
-                    <input type="text" id="txtPass" th:field="*{job}"placeholder="Job"><br><br>
-                    <input type="text" id="txtId" th:field="*{major}"placeholder="Major"><br><br>
-                    <input type="text" id="txtPass" th:field="*{name}"placeholder="Name"><br><br>
-                    <input type="text" id="txtId" th:field="*{password}"placeholder="password"><br><br>
-                    <input type="text" id="txtPass" th:field="*{phone}"placeholder="phone"><br><br>
-                    <input type="text" id="txtId" th:field="*{status}"placeholder="Status"><br><br>
-                    <input type="text" id="txtPass" th:field="*{university}"placeholder="University"><br><br>
+                    <input type="text" id="txtPass" th:field="*{name}"placeholder="Nama"><br><br>
                     <input type="text" id="txtId" th:field="*{username}"placeholder="Username"><br><br>
+                    <input type="text" id="txtId" th:field="*{birthDate}" placeholder="Birthdate"><br><br>
+                    <input type="text" id="txtId" th:field="*{gender}"placeholder="Gender"><br><br>
+                    <input type="text" id="txtPass" th:field="*{phone}"placeholder="phone"><br><br>
+                    <input type="text" id="txtPass" th:field="*{email}"placeholder="Email"><br><br>
+                    <input type="password" id="txtId" th:field="*{password}"placeholder="password"><br><br>
+                    <input type="text" id="txtId" th:field="*{degree}" placeholder="Degree"><br><br>
+                    <input type="text" id="txtId" th:field="*{major}"placeholder="Major"><br><br>
+                    <input type="text" id="txtPass" th:field="*{university}"placeholder="University"><br><br>
+                    <input type="text" id="txtId" th:field="*{status}"placeholder="Status"><br><br>
+                    <input type="text" id="txtPass" th:field="*{currentCompany}"placeholder="Current Company"><br><br>                                    
+                    <input type="text" id="txtPass" th:field="*{job}"placeholder="Job"><br><br>
                     <input type="submit" value="register">
                 </form>
                 <br>
                 <br>
             </div>
+        </div>
     </center>
     <div class="footer" style="background-color: #f8f9fb;">
         <p style="color:black;">© 2020 Copyright: 
